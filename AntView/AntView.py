@@ -2,7 +2,7 @@
 import tkinter as tk
 
 from AntView.Devices.LegSensors.LegSensorsControlView import LegSensorsControlView
-from ..\RoboView.Robot.Viewer.RobotSettings import RobotSettings
+from RoboView.Robot.Viewer.RobotSettings import RobotSettings
 
 from AntView.Devices.LegSensors.LegSensorsDataView import LegSensorsDataView
 from AntView.Devices.LegSensors.LegSensorsSetupView import LegSensorsSetupView
@@ -11,9 +11,9 @@ from AntView.Devices.legController.LegControllerControlView import LegController
 from AntView.Devices.legController.LegControllerDataView import LegControllersDataView
 from AntView.Devices.legController.LegControllerSetupView import LegControllerSetupView
 
-from ..\RoboView.Robot.Device.generic.dataHub.view.DataHubDataView import DataHubDataView
-from ..\RoboView.Robot.Viewer.RobotViewer import RobotViewer
-from ..\RoboView.Gui.InternalWindow.WindowState import State
+from RoboView.Robot.Device.generic.dataHub.view.DataHubDataView import DataHubDataView
+from RoboView.Robot.Viewer.RobotViewer import RobotViewer
+from RoboView.Gui.InternalWindow.WindowState import State
 
 class AntView(RobotViewer):
 

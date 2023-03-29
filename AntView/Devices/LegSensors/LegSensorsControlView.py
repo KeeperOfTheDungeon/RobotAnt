@@ -1,4 +1,4 @@
-from ..\RoboView.Robot.Device.Viewer.DeviceView import DeviceView
+from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
 from RoboView.Robot.component.actor.led.view.LedControlView import LedControlView
 
 
