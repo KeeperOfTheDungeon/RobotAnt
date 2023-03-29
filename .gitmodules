@@ -1,0 +1,6 @@
+[submodule "RoboControl"]
+	path = RoboControl
+	url = https://github.com/KeeperOfTheDungeon/RoboControl.git
+[submodule "RoboView"]
+	path = RoboView
+	url = https://github.com/KeeperOfTheDungeon/RoboView.git
