@@ -7,8 +7,10 @@ from AntView.AntView import AntView
 
 def main(do_gui: bool, do_cli: bool):
     ant = Ant()
+    yield ant
     if do_gui:
-        _ant_viewer = AntView(ant)
+        ant_viewer = AntView(ant)
+        # yield ant_viewer
     if do_cli:
         ant.run()
 
@@ -23,5 +25,12 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    main(args.gui, args.cli)
+    resources = []
+    try:
+        resources += main(args.gui, args.cli) or []
+    except KeyboardInterrupt:
+        print('Interrupted ! (ctrl+c)')
+    finally:
+        print("Disconnecting: ", resources)
+        [r.disconnect() for r in resources]
     print("Shutting down!")
