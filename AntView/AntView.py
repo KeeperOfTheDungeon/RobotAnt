@@ -13,12 +13,24 @@ from AntView.Devices.legController.LegControllerSetupView import LegControllerSe
 from RoboView.Robot.Device.generic.dataHub.view.DataHubDataView import DataHubDataView
 from RoboView.Robot.Viewer.RobotViewer import RobotViewer
 from RoboView.Gui.InternalWindow.WindowState import State
+from ant import Ant
 
 
 class AntView(RobotViewer):
+    _robot: Ant
 
-    def make_data_menu(self, menue_bar):
+    def __init__(self, *args):
+        super().__init__(*args)
 
+        # FIXME why do these need to be saved separately
+        self._main_data_hub_data = None
+        self._head_sensors_data = None
+        self._leg_sensors_data = None
+        self._leg_controller_data = None
+
+    def make_data_menu(self, menue_bar: tk.Menu) -> None:
+
+        # FIXME menue is likely a typo
         menue = tk.Menu(menue_bar)
         menue.add_command(label="Data Hub",
                           command=self.show_data_hub_data)
@@ -30,7 +42,7 @@ class AntView(RobotViewer):
                           command=self.show_leg_controller_data)
         menue_bar.add_cascade(label="Data View", menu=menue)
 
-    def make_control_menu(self, menue_bar):
+    def make_control_menu(self, menue_bar: tk.Menu) -> None:
         menue = tk.Menu(menue_bar)
         menue.add_command(label="Leg Sensors",
                           command=self.show_leg_sensors_control)
@@ -38,7 +50,7 @@ class AntView(RobotViewer):
                           command=self.show_leg_controller_control)
         menue_bar.add_cascade(label="Control View", menu=menue)
 
-    def make_setup_menu(self, menue_bar):
+    def make_setup_menu(self, menue_bar: tk.Menu) -> None:
         menue = tk.Menu(menue_bar)
         menue.add_command(label="Leg Sensors",
                           command=self.show_leg_sensors_setup)

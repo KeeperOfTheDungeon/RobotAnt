@@ -1,7 +1,10 @@
 from time import sleep
+from typing import Optional
+
 from Devices.AntDeviceId import AntDeviceConfig
 from Devices.HeadSensors.HeadSensors import HeadSensors
 from Devices.LegController.LegController import LegController
+from RoboControl.Com.Connection.Connection import Connection
 from RoboControl.Com.Connection.SerialConnection import SerialConnection
 from Devices.LegSensors.LegSensors import LegSensors
 from RoboControl.Robot.Device.Generic.DataHub.DataHub import DataHub
@@ -11,8 +14,16 @@ from RoboControl.Robot.Robot import Robot
 class Ant(Robot):
 	def __init__(self):
 		super().__init__("ant")
+
+		# FIXME these aren't actually optional
+		#   a better way would be to return the values from add_devices and set them here
+		self._data_hub: Optional[DataHub] = None
+		self._head_sensors: Optional[HeadSensors] = None
+		self._leg_sensors: Optional[LegSensors] = None
+		self._leg_controller: Optional[LegController] = None
 		self.add_devices()
-		self._connection = SerialConnection()
+
+		self._connection: Connection = SerialConnection()
 		self.connect(self._connection)
 
 	def run(self):
