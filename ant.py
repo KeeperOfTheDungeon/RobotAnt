@@ -15,21 +15,23 @@ class Ant(Robot):
 	def __init__(self):
 		super().__init__("ant")
 
+		self._connection: Optional[Connection] = None
 		# FIXME these aren't actually optional
 		#   a better way would be to return the values from add_devices and set them here
 		self._data_hub: Optional[DataHub] = None
 		self._head_sensors: Optional[HeadSensors] = None
 		self._leg_sensors: Optional[LegSensors] = None
 		self._leg_controller: Optional[LegController] = None
-		self.add_devices()
-
-		self._connection: Connection = SerialConnection()
-		self.connect(self._connection)
 
 	def run(self):
 		while True:
 			self._data_hub.remote_ping_device()
 			sleep(1)
+
+	def connect(self, connection: SerialConnection) -> None:
+		self._connection = connection
+		super().connect(connection)
+		self.add_devices()
 
 	def add_devices(self):
 		self._data_hub = DataHub(AntDeviceConfig.MAIN_DATA_HUB)

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import argparse
+import traceback
 
+from RoboControl.Com.Connection.SerialConnection import SerialConnection
 from ant import Ant
 from AntView.AntView import AntView
 
@@ -12,6 +14,10 @@ def main(do_gui: bool, do_cli: bool):
         ant_viewer = AntView(ant)
         # yield ant_viewer
     if do_cli:
+        available_ports = SerialConnection.get_ports()
+        port = SerialConnection.port if SerialConnection.port in available_ports else available_ports[0].name
+        connection = SerialConnection().set_port(port)
+        ant.connect(connection)
         ant.run()
 
 
@@ -32,5 +38,9 @@ if __name__ == "__main__":
         print('Interrupted ! (ctrl+c)')
     finally:
         print("Disconnecting: ", resources)
-        [r.disconnect() for r in resources]
+        for r in resources:
+            try:
+                r.disconnect()
+            except Exception as e:
+                print(f"Couldn't disconnect {r}: {e}")
     print("Shutting down!")
