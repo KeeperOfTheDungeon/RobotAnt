@@ -1,5 +1,5 @@
 
-from Devices.AntDeviceId import AntDeviceConfig
+from Devices.AntDeviceConfig import AntDeviceConfig
 from RoboControl.Robot.AbstractRobot.AbstractComponentList import AbstractComponentList
 from RoboControl.Robot.AbstractRobot.Config.ComponentConfig import ComponentConfig
 
