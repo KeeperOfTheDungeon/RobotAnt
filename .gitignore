@@ -37,3 +37,6 @@ __pypackages__
 .directory
 [tT]humbs.db
 [dD]esktop.ini
+
+# Log Dumps
+*.csv
