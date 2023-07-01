@@ -68,18 +68,6 @@ STREAM_TEMPERATURES = 0x27
 
 
 class LegControllerProtocol(DeviceProtocol):
-
-    def __init__(self, leg_controller):
-        super().__init__(leg_controller)
-        # self._device_id = 0
-        device_id = 0
-
-
-class LegControllerProtocol(DeviceProtocol):
-
-    def __init__(self, device):
-        super().__init__(device)
-
     def get_servo_protocol(self):
         protocol = {
             "device_id": self._device_id,

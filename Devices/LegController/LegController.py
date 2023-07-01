@@ -23,15 +23,10 @@ class LegController(RobotDevice):
 
     def build_protocol(self):
         super().build_protocol()
-
-        self._remote_command_processor_list.extend(self._servo_set.get_command_processors())
-        self._remote_command_processor_list.extend(self._current_sensor_set.get_command_processors())
-
-        self._remote_message_processor_list.extend(self._servo_set.get_message_processors())
-        self._remote_message_processor_list.extend(self._current_sensor_set.get_message_processors())
-
-        self._remote_stream_processor_list.extend(self._servo_set.get_stream_processors())
-        self._remote_stream_processor_list.extend(self._current_sensor_set.get_stream_processors())
+        for hw_set in [self._servo_set, self._current_sensor_set]:
+            self._remote_command_processor_list.extend(hw_set.get_command_processors())
+            self._remote_message_processor_list.extend(hw_set.get_message_processors())
+            self._remote_stream_processor_list.extend(hw_set.get_stream_processors())
 
     def get_servo_set(self):
         return self._servo_set
