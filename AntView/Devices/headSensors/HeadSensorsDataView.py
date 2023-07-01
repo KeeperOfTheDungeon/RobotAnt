@@ -1,11 +1,18 @@
+import customtkinter as ctk
+
+from Devices.HeadSensors.HeadSensors import HeadSensors
+from RoboView.Robot.Viewer.WindowBar import WindowBar
+
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
 from RoboView.Robot.component.sensor.generic.distance.view.DistanceSensorDataView import DistanceSensorDataView
 from RoboView.Robot.component.sensor.generic.lux.view.LuxSensorDataView import LuxSensorDataView
 
 
 class HeadSensorsDataView(DeviceView):
-    def __init__(self, device, window_bar):
-        super().__init__("Head Sensors Data", device, window_bar)
+    FRAME_NAME: str = "Head Sensors Data"
+
+    def __init__(self, root: ctk.CTkFrame, device: HeadSensors, window_bar: WindowBar):
+        super().__init__(root, device, window_bar)
         self.make_display(device)
 
     def make_display(self, device):

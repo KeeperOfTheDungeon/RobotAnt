@@ -1,10 +1,19 @@
+import customtkinter as ctk
+
+from Devices.AntDeviceConfig import AntDeviceConfig
+from Devices.LegController.LegController import LegController
+from RoboControl.Robot.AbstractRobot.AbstractRobot import AbstractRobot
+from RoboControl.Robot.Component.Actor.servo.ServoSet import ServoSet
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
+from RoboView.Robot.Viewer.WindowBar import WindowBar
 from RoboView.Robot.component.actor.servo.view.ServoControlView import ServoControlView
 
 
-class LegControllersControlView(DeviceView):
-    def __init__(self, device, window_bar):
-        super().__init__("Leg Controller Control", device, window_bar)
+class LegControllersControlView(DeviceView):  # AntLegControllerControlView extends MotionControllerControlView
+    FRAME_NAME: str = "Leg Controller Control"
+
+    def __init__(self, root: ctk.CTkFrame, device: LegController, window_bar: WindowBar):
+        super().__init__(root, device, window_bar)
         self.make_display(device)
 
     def make_display(self, device):

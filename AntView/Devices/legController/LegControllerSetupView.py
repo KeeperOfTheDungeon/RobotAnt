@@ -1,10 +1,22 @@
+import customtkinter as ctk
+
+from Devices.AntDeviceConfig import AntDeviceConfig
+from Devices.LegController.LegController import LegController
+from RoboControl.Robot.AbstractRobot.AbstractRobot import AbstractRobot
+from RoboControl.Robot.Component.Actor.servo.ServoSet import ServoSet
+from RoboControl.Robot.Component.generic.currentSensor.CurrentSensorSet import CurrentSensorSet
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
+from RoboView.Robot.Viewer.WindowBar import WindowBar
+from RoboView.Robot.component.actor.servo.view.ServoDataView import ServoDataView
 from RoboView.Robot.component.actor.servo.view.ServoSetupView import ServoSetupView
+from RoboView.Robot.component.sensor.generic.currentSensor.CurrentSensorDataView import CurrentSensorDataView
 
 
 class LegControllerSetupView(DeviceView):
-    def __init__(self, device, window_bar):
-        super().__init__("Leg Controller Setup", device, window_bar)
+    FRAME_NAME: str = "Leg Controller Setup"
+
+    def __init__(self, root: ctk.CTkFrame, device: LegController, window_bar: WindowBar):
+        super().__init__(root, device, window_bar)
         self.make_display(device)
 
     def make_display(self, device):

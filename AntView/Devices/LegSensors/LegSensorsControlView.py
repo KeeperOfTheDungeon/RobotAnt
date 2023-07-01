@@ -1,10 +1,16 @@
+import customtkinter as ctk
+
+from Devices.LegSensors.LegSensors import LegSensors
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
+from RoboView.Robot.Viewer.WindowBar import WindowBar
 from RoboView.Robot.component.actor.led.view.LedControlView import LedControlView
 
 
 class LegSensorsControlView(DeviceView):
-    def __init__(self, device, window_bar):
-        super().__init__("Leg Sensors Control", device, window_bar)
+    FRAME_NAME: str = "Leg Sensors Control"
+
+    def __init__(self, root: ctk.CTkFrame, device: LegSensors, window_bar: WindowBar):
+        super().__init__(root, device, window_bar)
         self.make_display(device)
 
     def make_display(self, device):

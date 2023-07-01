@@ -1,11 +1,21 @@
+import customtkinter as ctk
+
+from Devices.AntDeviceConfig import AntDeviceConfig
+from Devices.LegSensors.LegSensors import LegSensors
+from RoboControl.Robot.AbstractRobot.AbstractRobot import AbstractRobot
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
+from RoboView.Robot.Viewer.WindowBar import WindowBar
 from RoboView.Robot.component.sensor.generic.distance.view.DistanceSensorDataView import DistanceSensorDataView
 from RoboView.Robot.component.sensor.generic.lux.view.LuxSensorDataView import LuxSensorDataView
+from RoboView.Robot.component.view.ComponentView import ComponentView
+from RoboView.Robot.component.view.MissingComponentView import MissingComponentView
 
 
 class LegSensorsDataView(DeviceView):
-    def __init__(self, device, window_bar):
-        super().__init__("Leg Sensors Data", device, window_bar)
+    FRAME_NAME: str = "Leg Sensors Data"
+
+    def __init__(self, root: ctk.CTkFrame, device: LegSensors, window_bar: WindowBar):
+        super().__init__(root, device, window_bar)
         self.make_display(device)
 
     def make_display(self, device):
