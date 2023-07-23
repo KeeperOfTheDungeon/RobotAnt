@@ -9,7 +9,6 @@ class LegSensorsDataView(DeviceView):
         self.make_display(device)
 
     def make_display(self, device):
-
         vcln_4000_sensors = device.get_vcnl_4000_set()
 
         for sensor in vcln_4000_sensors:
@@ -22,8 +21,7 @@ class LegSensorsDataView(DeviceView):
     def set_robot(self, robot):
         pass
 
-        
-        
+
 """package de.hska.lat.ant.devices.legSensors;
 
 

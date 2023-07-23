@@ -3,16 +3,15 @@ from RoboView.Robot.component.actor.servo.view.ServoControlView import ServoCont
 
 
 class LegControllersControlView(DeviceView):
-	def __init__(self, device, window_bar) :
-		super().__init__( "Leg Controller Control", device, window_bar)
-		self.make_display(device)
-		
+    def __init__(self, device, window_bar):
+        super().__init__("Leg Controller Control", device, window_bar)
+        self.make_display(device)
 
-	def make_display(self, device):
+    def make_display(self, device):
+        servos = device.get_servo_set()
+        for servo in servos:
+            view = ServoControlView.create_view(self._display, servo, self._settings_key)
 
-		servos = device.get_servo_set()
-		for servo in servos:
-			view = ServoControlView.create_view(self._display , servo, self._settings_key)
 
 """				package de.hska.lat.ant.devices.legController;
 

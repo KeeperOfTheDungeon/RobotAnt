@@ -3,18 +3,16 @@ from RoboView.Robot.component.actor.led.view.LedControlView import LedControlVie
 
 
 class LegSensorsControlView(DeviceView):
-	def __init__(self, device, window_bar):
-		super().__init__("Leg Sensors Control", device, window_bar)
-		self.make_display(device)
+    def __init__(self, device, window_bar):
+        super().__init__("Leg Sensors Control", device, window_bar)
+        self.make_display(device)
 
-	def make_display(self, device):
-
-		leds = device.get_led_set()
-		for led in leds:
-			view = LedControlView.create_view(self._display, led, self._settings_key)
-			# if view is not None:
-			# view._frame.place(x = 50, y = 50)
-
+    def make_display(self, device):
+        leds = device.get_led_set()
+        for led in leds:
+            view = LedControlView.create_view(self._display, led, self._settings_key)
+        # if view is not None:
+        # view._frame.place(x = 50, y = 50)
 
 
 """package de.hska.lat.ant.devices.legSensors;

@@ -1,18 +1,17 @@
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
 from RoboView.Robot.component.actor.servo.view.ServoSetupView import ServoSetupView
 
+
 class LegControllerSetupView(DeviceView):
-	def __init__(self, device, window_bar) :
-		super().__init__( "Leg Controller Setup", device, window_bar)
-		self.make_display(device)
-		
+    def __init__(self, device, window_bar):
+        super().__init__("Leg Controller Setup", device, window_bar)
+        self.make_display(device)
 
-	def make_display(self, device):
-
-		servos = device.get_servo_set()
-		for servo in servos:
-			print("servo")
-			ServoSetupView.create_view(self._display , servo, self._settings_key)
+    def make_display(self, device):
+        servos = device.get_servo_set()
+        for servo in servos:
+            print("servo")
+            ServoSetupView.create_view(self._display, servo, self._settings_key)
 
 
 """package de.hska.lat.ant.devices.legController;

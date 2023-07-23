@@ -2,6 +2,7 @@ from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
 from RoboView.Robot.component.sensor.generic.currentSensor.CurrentSensorDataView import CurrentSensorDataView
 from RoboView.Robot.component.actor.servo.view.ServoDataView import ServoDataView
 
+
 class LegControllersDataView(DeviceView):
     def __init__(self, device, window_bar):
         super().__init__("Leg Controller Data", device, window_bar)
@@ -14,21 +15,18 @@ class LegControllersDataView(DeviceView):
             view = ServoDataView.create_view(
                 self._display, servo, self._settings_key)
 
-
         current_sensors = device.get_current_sensors()
         for sensor in current_sensors:
             view = CurrentSensorDataView.create_view(
                 self._display, sensor, self._settings_key)
-            
-
 
     # for sensor in vcln_4000_sensors:
-            # view = DistanceSensorDataView.create_view(self._display , sensor.get_distance_sensor())
-        # if view is not None:
-        # view._frame.place(x = 50, y = 50 ,width = 50, height = 50)
+    # view = DistanceSensorDataView.create_view(self._display , sensor.get_distance_sensor())
+    # if view is not None:
+    # view._frame.place(x = 50, y = 50 ,width = 50, height = 50)
 
-            # view = LuxSensorDataView.create_view(self._display , sensor.get_lux_sensor())
-            # view._frame.place(x = 150, y = 50 ,width = 50, height = 50)
+    # view = LuxSensorDataView.create_view(self._display , sensor.get_lux_sensor())
+    # view._frame.place(x = 150, y = 50 ,width = 50, height = 50)
 
 
 """package de.hska.lat.ant.devices.legController;

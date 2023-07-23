@@ -9,7 +9,6 @@ class HeadSensorsDataView(DeviceView):
         self.make_display(device)
 
     def make_display(self, device):
-
         vcln_4000_sensors = device.get_vcnl_4000_set()
 
         for sensor in vcln_4000_sensors:
@@ -17,8 +16,7 @@ class HeadSensorsDataView(DeviceView):
                 self._display, sensor.get_distance_sensor(), self._settings_key)
 
             view = LuxSensorDataView.create_view(
-                self._display, sensor.get_lux_sensor(),  self._settings_key)
-            
+                self._display, sensor.get_lux_sensor(), self._settings_key)
 
 
 """
