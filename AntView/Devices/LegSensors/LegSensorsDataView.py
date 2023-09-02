@@ -1,3 +1,5 @@
+from tkinter import messagebox
+
 import customtkinter as ctk
 
 from Devices.AntDeviceConfig import AntDeviceConfig
@@ -31,7 +33,12 @@ class LegSensorsDataView(DeviceView):
             pass
 
     def set_robot(self, robot: AbstractRobot) -> bool:
-        return self.set_robot_with_device(robot, AntDeviceConfig.LEG_SENSORS, LegSensors.__name__)
+        sensors: LegSensors = robot.get_device_on_name(AntDeviceConfig.LEG_SENSORS.get_name())
+        if sensors is None:
+            messagebox.showerror("Error", "No leg sensors available!")
+            return False
+        self.make_display(robot.get_name(), sensors)
+        return True
 
     """ TODO
     def add_detector(self, detector: DigitalDetector) -> ComponentView:

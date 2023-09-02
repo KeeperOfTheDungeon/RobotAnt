@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 from AntView.Devices.LegSensors.LegSensorsControlView import LegSensorsControlView
 from RoboView.Robot.Viewer.RobotSettings import RobotSettings
@@ -64,8 +65,11 @@ class AntView(RobotViewer):
                 and not RobotSettings.get_int("{}.state".format("DataHubDataView")) == State.EXTERNAL.value):
             print("show Data hub data")
             device = self._robot.get_data_hub()
-            self._main_data_hub_data = DataHubDataView(self._frame, device, self._window_bar)
-            self._main_data_hub_data.draw()
+            if device is None:
+                messagebox.showerror("Error", "No data hub available!")
+            else:
+                self._main_data_hub_data = DataHubDataView(self._frame, device, self._window_bar)
+                self._main_data_hub_data.draw()
         else:
             print("{} already open".format("DataHubDataView"))
 
@@ -74,8 +78,11 @@ class AntView(RobotViewer):
                 and not RobotSettings.get_int("{}.state".format("HeadSensorsDataView")) == State.EXTERNAL.value):
             print("show head Sensors data")
             device = self._robot.get_head_sensors()
-            self._head_sensors_data = HeadSensorsDataView(self._frame, device, self._window_bar)
-            self._head_sensors_data.draw()
+            if device is None:
+                messagebox.showerror("Error", "No head sensor available!")
+            else:
+                self._head_sensors_data = HeadSensorsDataView(self._frame, device, self._window_bar)
+                self._head_sensors_data.draw()
         else:
             print("{} already open".format("HeadSensorsDataView"))
 
@@ -85,8 +92,11 @@ class AntView(RobotViewer):
                 and not RobotSettings.get_int("{}.state".format("LegSensorsDataView")) == State.EXTERNAL.value):
             print("show leg Sensors data")
             device = self._robot.get_leg_sensors()
-            self._leg_sensors_data = LegSensorsDataView(self._frame, device, self._window_bar)
-            self._leg_sensors_data.draw()
+            if device is None:
+                messagebox.showerror("Error", "No leg sensor available!")
+            else:
+                self._leg_sensors_data = LegSensorsDataView(self._frame, device, self._window_bar)
+                self._leg_sensors_data.draw()
         else:
             print("{} already open".format("LegSensorsDataView"))
 
@@ -95,8 +105,11 @@ class AntView(RobotViewer):
                 and not RobotSettings.get_int("{}.state".format("LegControllersDataView")) == State.EXTERNAL.value):
             print("show leg controller data")
             device = self._robot.get_leg_controller()
-            self._leg_controller_data = LegControllersDataView(self._frame, device, self._window_bar)
-            self._leg_controller_data.draw()
+            if device is None:
+                messagebox.showerror("Error", "No leg controller available!")
+            else:
+                self._leg_controller_data = LegControllersDataView(self._frame, device, self._window_bar)
+                self._leg_controller_data.draw()
         else:
             print("{} already open".format("LegControllersDataView"))
 
@@ -106,8 +119,11 @@ class AntView(RobotViewer):
                 and not RobotSettings.get_int("{}.state".format("LegSensorsControlView")) == State.EXTERNAL.value):
             print("show leg sensors control")
             device = self._robot.get_leg_sensors()
-            self._leg_controller_data = LegSensorsControlView(self._frame, device, self._window_bar)
-            self._leg_controller_data.draw()
+            if device is None:
+                messagebox.showerror("Error", "No leg sensor available!")
+            else:
+                self._leg_controller_data = LegSensorsControlView(self._frame, device, self._window_bar)
+                self._leg_controller_data.draw()
         else:
             print("{} already open".format("LegSensorsControlView"))
 
@@ -116,8 +132,11 @@ class AntView(RobotViewer):
                 and not RobotSettings.get_int("{}.state".format("LegControllersControlView")) == State.EXTERNAL.value):
             print("show leg controller control")
             device = self._robot.get_leg_controller()
-            self._leg_controller_data = LegControllersControlView(self._frame, device, self._window_bar)
-            self._leg_controller_data.draw()
+            if device is None:
+                messagebox.showerror("Error", "No leg controller available!")
+            else:
+                self._leg_controller_data = LegControllersControlView(self._frame, device, self._window_bar)
+                self._leg_controller_data.draw()
         else:
             print("{} already open".format("LegControllersControlView"))
 
@@ -127,8 +146,11 @@ class AntView(RobotViewer):
                 and not RobotSettings.get_int("{}.state".format("LegControllerSetupView")) == State.EXTERNAL.value):
             print("show leg controller setup")
             device = self._robot.get_leg_controller()
-            self._leg_controller_data = LegControllerSetupView(self._frame, device, self._window_bar)
-            self._leg_controller_data.draw()
+            if device is None:
+                messagebox.showerror("Error", "No leg controller available!")
+            else:
+                self._leg_controller_data = LegControllerSetupView(self._frame, device, self._window_bar)
+                self._leg_controller_data.draw()
         else:
             print("{} already open".format("LegControllerSetupView"))
 
@@ -136,7 +158,6 @@ class AntView(RobotViewer):
         if (not RobotSettings.get_int("{}.state".format("LegSensorsSetupView")) == State.INTERNAL.value
                 and not RobotSettings.get_int("{}.state".format("LegSensorsSetupView")) == State.EXTERNAL.value):
             print("show leg Sensors setup (not implemented)")
-            # device = self._robot.get_leg_sensors()
             # self._leg_sensors_data = LegSensorsSetupView(self._frame, device, self._window_bar)
             # self._leg_sensors_data.draw()
         else:
