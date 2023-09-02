@@ -1,6 +1,8 @@
 import customtkinter as ctk
 
+from Devices.AntDeviceConfig import AntDeviceConfig
 from Devices.HeadSensors.HeadSensors import HeadSensors
+from RoboControl.Robot.AbstractRobot.AbstractRobot import AbstractRobot
 from RoboView.Robot.Viewer.WindowBar import WindowBar
 
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
@@ -25,122 +27,37 @@ class HeadSensorsDataView(DeviceView):
             view = LuxSensorDataView.create_view(
                 self._display, sensor.get_lux_sensor(), self._settings_key)
 
+    def make_display_legacy(self, robot_name: str, head_sensors: HeadSensors) -> None:
+        self.set_device(robot_name, head_sensors)
 
-"""
+        for sensor in head_sensors.get_mlx90614_set():
+            view = TemperatureSensorDataView.create_view(self._display, sensor.get_ambient_sensor(), self._settings_key)
+            self.add_component(view)
+            view = TemperatureSensorDataView.create_view(self._display, sensor.get_object_sensor(), self._settings_key)
+            self.add_component(view)
 
-private void makeDisplay(String robotName, HeadSensors hs) 
-{
+        for sensor in head_sensors.get_vcnl_4000_set():
+            view = LuxSensorDataView.create_view(self._display, sensor.get_lux_sensor(), self._settings_key)
+            self.add_component(view)
+            view = DistanceSensorDataView.create_view(self._display, sensor.get_distance_sensor(), self._settings_key)
+            self.add_component(view)
 
-	this.setDevice(robotName, hs);
-	
-	for ( Mlx90614 sensor : hs.getMlx90614Set())
-	{
-		this.addComponent(TemperatureSensorDataView.createView(sensor.getAmbientSensor()));
-		this.addComponent(TemperatureSensorDataView.createView(sensor.getObjectSensor()));
-	}
+        for sensor in head_sensors.get_bmp085_set():
+            view = TemperatureSensorDataView.create_view(
+                self._display, sensor.get_temperature_sensor(), self._settings_key
+            )
+            self.add_component(view)
+            view = BarometricSensorDataView.create_view(
+                self._display, sensor.get_barometric_sensor(), self._settings_key
+            )
+            self.add_component(view)
 
+    def set_robot(self, robot: AbstractRobot) -> bool:
+        return self.set_robot_with_device(robot, AntDeviceConfig.HEAD_SENSORS, HeadSensors.__name__)
 
-
-	for ( Vcnl4000 sensor : hs.getVcnl4000Set())
-	{
-		this.addComponent(LuxSensorDataView.createView(sensor.getLuxSensor()));
-		this.addComponent(DistanceSensorDataView.createView(sensor.getDistanceSensor()));
-	}
-	/*
-	for ( m sensor : hs.getBmp085Set())
-	{
-		this.addComponent(TemperatureSensorDataView.createView(sensor.getTemperatureSensor()));
-		this.addComponent(BarometricSensorDataView.createView(sensor.getBarometricSensor()));
-
-	}
-	*/
-}
-"""
-
-"""
-package de.hska.lat.ant.devices.headSensors;
-
-
-import de.hska.lat.ant.metaData.AntDeviceId;
-import de.hska.lat.robot.abstractRobot.AbstractRobot;
-
-import de.hska.lat.robot.component.view.ComponentView;
-import de.hska.lat.robot.component.view.MissingComponentView;
-
-import de.hska.lat.robot.component.digitalDetector.DigitalDetector;
-import de.hska.lat.robot.component.generic.distance.view.DistanceSensorDataView;
-import de.hska.lat.robot.component.generic.lux.view.LuxSensorDataView;
-import de.hska.lat.robot.component.generic.temperature.view.TemperatureSensorDataView;
-
-
-import de.hska.lat.robot.component.temperatureSensor.mlx90614.Mlx90614;
-
-
-import de.hska.lat.robot.component.sensor.vcnl4000.Vcnl4000;
-
-
-
-
-
-import de.hska.lat.robot.device.viewer.DeviceView;
-
-import de.hska.lat.robot.value.view.detector.DetectorValueView;
-
-
-
-
-public class HeadSensorsDataView extends DeviceView
-{
-
-
-
-	
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1840040237898819284L;
-
-
-@Override
-public boolean setRobot(AbstractRobot<?,?,?> robot)
-{
-	HeadSensors hs;
-	
-	hs=(HeadSensors)robot.getDeviceOnName(AntDeviceId.HEAD_SENSORS.getName());
-	
-			
-	if (hs!=null)
-	{
-		this.makeDisplay(robot.getName(), hs);
-		return(true);
-	}
-	else
-	{
-		this.makeErrorDisplay(HeadSensors.class.getName());
-		return(false);
-	}
-}
-
-
-
-
-
-
-public ComponentView addDetector(DigitalDetector detector)
-{
-	if (detector!=null)
-	{
-		return(new DetectorValueView(detector.getValue(),false));
-	}
-	else
-	{
-		return(new MissingComponentView(DigitalDetector.class.getName()));
-	}
-}
-
-
-
-
-
-}
-"""
+    """ TODO
+    def add_detector(self, detector: DigitalDetector) -> ComponentView:
+        if detector is None:
+            return MissingComponentView(DigitalDetector.__name__)
+        return DetectorValueView(detector.get_value(), False)
+    """

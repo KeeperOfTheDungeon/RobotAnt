@@ -25,85 +25,20 @@ class LegControllerSetupView(DeviceView):
             print("servo")
             ServoSetupView.create_view(self._display, servo, self._settings_key)
 
+    def set_robot(self, robot: AbstractRobot) -> bool:
+        return self.set_robot_with_device(robot, AntDeviceConfig.LEG_CONTROLLER, LegController.__name__)
 
-"""package de.hska.lat.ant.devices.legController;
+    def make_display_legacy(self, robot_name: str, motion_controller: LegController) -> None:
+        self.set_device(robot_name, motion_controller)
+        self.add_servos(motion_controller.get_servo_set())
+        self.add_currents(motion_controller.get_current_sensors())
 
-import de.hska.lat.ant.metaData.AntDeviceId;
-import de.hska.lat.robot.abstractRobot.AbstractRobot;
+    def add_currents(self, currents: CurrentSensorSet) -> None:
+        for current in currents:
+            view = CurrentSensorDataView.create_view(self._display, current, self._settings_key)
+            # self.add_component(view)
 
-import de.hska.lat.robot.component.servo.view.ServoSetupView;
-import de.hska.lat.robot.component.actor.servo.Servo;
-import de.hska.lat.robot.component.actor.servo.ServoSet;
-import de.hska.lat.robot.component.currentSensor.CurrentSensor;
-import de.hska.lat.robot.component.currentSensor.CurrentSensorSet;
-import de.hska.lat.robot.component.currentSensor.CurrentSetupView;
-import de.hska.lat.robot.device.viewer.DeviceView;
-
-
-public class AntLegControllerSetupView extends DeviceView
-{
-
-
-
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5337372269809597680L;
-
-@Override
-public boolean setRobot(AbstractRobot<?,?,?> robot)
-{
-	LegController legController;
-	
-	legController=(LegController)robot.getDeviceOnId(AntDeviceId.LEG_CONTROLLER.getId());
-	
-			
-	if (legController!=null)
-	{
-		this.makeDisplay(robot.getName(), legController);
-		return(true);
-	}
-	else
-	{
-		makeErrorDisplay(LegController.class.getName());
-		return(false);
-	}
-}
-	
-
-
-public void makeDisplay(String robotName, LegController motionController)
-{
-	
-	this.setDevice(robotName, motionController);
-	
-	
-
-	this.addServos(motionController.getServos());
-	this.addCurrents(motionController.getCurrentSensors());
-	
-}
-
-
-
-protected void addServos(ServoSet servos)
-{
-
-	for (Servo servo : servos)
-	{
-		this.addComponent(ServoSetupView.createView(servo));
-	}
-}
-
-
-protected void addCurrents(CurrentSensorSet currents)
-{
-
-	for (CurrentSensor current : currents)
-	{
-		this.addComponent(CurrentSetupView.createView(current));
-	}
-}
-
-}
-"""
+    def add_servos(self, servos: ServoSet) -> None:
+        for servo in servos:
+            view = ServoDataView(self._display, servo, self._settings_key)
+            # self.add_component(view)
