@@ -69,7 +69,7 @@ class AntView(RobotViewer):
                 messagebox.showerror("Error", "No data hub available!")
             else:
                 self._main_data_hub_data = DataHubDataView(self._frame, device, self._window_bar)
-                self._main_data_hub_data.draw()
+                self._main_data_hub_data.set_robot(self._robot)
         else:
             print("{} already open".format("DataHubDataView"))
 
@@ -82,7 +82,8 @@ class AntView(RobotViewer):
                 messagebox.showerror("Error", "No head sensor available!")
             else:
                 self._head_sensors_data = HeadSensorsDataView(self._frame, device, self._window_bar)
-                self._head_sensors_data.draw()
+                self._head_sensors_data.set_robot(self._robot)
+                self._head_sensors_data.resize(950, 400)  # FIXME this should respect settings
         else:
             print("{} already open".format("HeadSensorsDataView"))
 
@@ -96,7 +97,8 @@ class AntView(RobotViewer):
                 messagebox.showerror("Error", "No leg sensor available!")
             else:
                 self._leg_sensors_data = LegSensorsDataView(self._frame, device, self._window_bar)
-                self._leg_sensors_data.draw()
+                self._leg_sensors_data.set_robot(self._robot)
+                self._leg_sensors_data.resize(1020, 400)  # FIXME this should respect settings
         else:
             print("{} already open".format("LegSensorsDataView"))
 
@@ -109,7 +111,8 @@ class AntView(RobotViewer):
                 messagebox.showerror("Error", "No leg controller available!")
             else:
                 self._leg_controller_data = LegControllersDataView(self._frame, device, self._window_bar)
-                self._leg_controller_data.draw()
+                self._leg_controller_data.set_robot(self._robot)
+                self._leg_controller_data.resize(1200, 500)  # FIXME this should respect settings
         else:
             print("{} already open".format("LegControllersDataView"))
 
@@ -123,7 +126,8 @@ class AntView(RobotViewer):
                 messagebox.showerror("Error", "No leg sensor available!")
             else:
                 self._leg_controller_data = LegSensorsControlView(self._frame, device, self._window_bar)
-                self._leg_controller_data.draw()
+                self._leg_controller_data.set_robot(self._robot)
+                self._leg_controller_data.resize(1450, 400)  # FIXME this should respect settings
         else:
             print("{} already open".format("LegSensorsControlView"))
 
@@ -136,7 +140,8 @@ class AntView(RobotViewer):
                 messagebox.showerror("Error", "No leg controller available!")
             else:
                 self._leg_controller_data = LegControllersControlView(self._frame, device, self._window_bar)
-                self._leg_controller_data.draw()
+                self._leg_controller_data.set_robot(self._robot)
+                self._leg_controller_data.resize(1100, 400)  # FIXME this should respect settings
         else:
             print("{} already open".format("LegControllersControlView"))
 
@@ -150,7 +155,8 @@ class AntView(RobotViewer):
                 messagebox.showerror("Error", "No leg controller available!")
             else:
                 self._leg_controller_data = LegControllerSetupView(self._frame, device, self._window_bar)
-                self._leg_controller_data.draw()
+                self._leg_controller_data.set_robot(self._robot)
+                self._leg_controller_data.resize(1500, 400)  # FIXME this should respect settings
         else:
             print("{} already open".format("LegControllerSetupView"))
 

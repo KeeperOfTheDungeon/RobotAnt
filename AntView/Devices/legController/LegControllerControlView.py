@@ -1,3 +1,5 @@
+from tkinter import messagebox
+
 import customtkinter as ctk
 
 from Devices.AntDeviceConfig import AntDeviceConfig
@@ -11,24 +13,21 @@ from RoboView.Robot.component.actor.servo.view.ServoControlView import ServoCont
 
 class LegControllersControlView(DeviceView):  # AntLegControllerControlView extends MotionControllerControlView
     FRAME_NAME: str = "Leg Controller Control"
+    _device: LegController
 
-    def __init__(self, root: ctk.CTkFrame, device: LegController, window_bar: WindowBar):
-        super().__init__(root, device, window_bar)
-        self.make_display(device)
-
-    def make_display(self, device):
-        servos = device.get_servo_set()
-        for servo in servos:
+    def make_display(self, robot_name: str, motion_controller: LegController):
+        self.set_device(robot_name, motion_controller)
+        x_cursor, y_cursor = 20, 20
+        for servo in motion_controller.get_servo_set():
             view = ServoControlView.create_view(self._display, servo, self._settings_key)
+            self.add_component(view, x_cursor, y_cursor)
+            view_width, view_height = view._frame.winfo_reqwidth() - 20, view._frame.winfo_reqheight()
+            x_cursor += view_width
 
     def set_robot(self, robot: AbstractRobot) -> bool:
-        return self.set_robot_with_device(robot, AntDeviceConfig.LEG_CONTROLLER, LegController.__name__)
-
-    def make_display_legacy(self, robot_name: str, motion_controller: LegController) -> None:
-        self.set_device(robot_name, motion_controller)
-        self.add_servos(motion_controller.get_servo_set())
-
-    def add_servos(self, servos: ServoSet) -> None:
-        for servo in servos:
-            view = ServoControlView(self._display, servo, self._settings_key)
-            self.add_component(view)
+        sensors: LegController = robot.get_device_on_name(AntDeviceConfig.LEG_CONTROLLER.get_name())
+        if sensors is None:
+            messagebox.showerror("Error", "No leg controllers available!")
+            return False
+        self.make_display(robot.get_name(), sensors)
+        return True

@@ -1,112 +1,33 @@
+from tkinter import messagebox
+
+from Devices.AntDeviceConfig import AntDeviceConfig
+from Devices.LegSensors.LegSensors import LegSensors
+from RoboControl.Robot.AbstractRobot.AbstractRobot import AbstractRobot
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
-from RoboView.Robot.component.actor.servo.view.ServoSetupView import ServoSetupView
+from RoboView.Robot.component.actor.led.view.LedControlView import LedControlView
 
 
 class LegSensorsSetupView(DeviceView):
-	def __init__(self, device) :
-		super().__init__( "Leg Sensors Setup", device, 100, 100 ,200, 200)
+    FRAME_NAME: str = "Leg Sensors Setup"
 
-		self.make_display(device)
-		
+    def make_display(self, robot_name: str, leg_sensors: LegSensors):
+        self.set_device(robot_name, leg_sensors)
+        x_cursor, y_cursor = 50, 50
+        for led in leg_sensors.get_led_set():
+            view = LedControlView.create_view(self._display, led, self._settings_key)
+            self.add_component(view, x_cursor, y_cursor)
 
-	def make_display(self, device):
+    def set_robot(self, robot: AbstractRobot) -> bool:
+        sensors: LegSensors = robot.get_device_on_name(AntDeviceConfig.LEG_SENSORS.get_name())
+        if sensors is None:
+            messagebox.showerror("Error", "No leg sensors available!")
+            return False
+        self.make_display(robot.get_name(), sensors)
+        return True
 
-		servos = device.get_servo_set()
-		for servo in servos:
-			print("servo")
-			ServoSetupView.create_view(self._display , servo, self._settings_key)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""package de.hska.lat.ant.devices.legSensors;
-
-
-import de.hska.lat.ant.metaData.AntDeviceId;
-import de.hska.lat.robot.abstractRobot.AbstractRobot;
-
-
-
-
-import de.hska.lat.robot.component.sensor.vcnl4000.Vcnl4000;
-import de.hska.lat.robot.component.sensor.vcnl4000.view.Vcnl4000SetupView;
-
-
-import de.hska.lat.robot.device.viewer.DeviceView;
-
-
-
-public class LegSensorsSetupView extends DeviceView
-{
-
-
-
-	
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1840040237898819284L;
-
-
-@Override
-public boolean setRobot(AbstractRobot<?,?,?> robot)
-{
-	LegSensors ls;
-	
-	ls=(LegSensors)robot.getDeviceOnName(AntDeviceId.LEG_SENSORS.getName());
-	
-			
-	if (ls!=null)
-	{
-		this.makeDisplay(robot.getName(), ls);
-		return(true);
-	}
-	else
-	{
-		this.makeErrorDisplay(LegSensors.class.getName());
-		return(false);
-	}
-}
-
-
-
-private void makeDisplay(String robotName, LegSensors hs) 
-{
-
-	this.setDevice(robotName, hs);
-	
-
-
-	for ( Vcnl4000 sensor : hs.getVcnl4000Set())
-	{
-		this.addComponent(Vcnl4000SetupView.createView(sensor));
-	}
-	
-	
-	
-
-
-	
-}
-
-
-
-
-
-
-
-
-
-}
-"""
+    """ TODO
+    def add_detector(self, detector: DigitalDetector) -> ComponentView:
+        if detector is None:
+            return MissingComponentView(DigitalDetector.__name__)
+        return DetectorValueView(detector.get_value(), False)
+    """

@@ -15,19 +15,20 @@ from RoboView.Robot.component.view.MissingComponentView import MissingComponentV
 
 class LegSensorsDataView(DeviceView):
     FRAME_NAME: str = "Leg Sensors Data"
-
-    def __init__(self, root: ctk.CTkFrame, device: LegSensors, window_bar: WindowBar):
-        super().__init__(root, device, window_bar)
-        self.make_display("WIP", device)
+    _device: LegSensors
 
     def make_display(self, robot_name: str, sensors: LegSensors) -> None:
         self.set_device(robot_name, sensors)
+        x_cursor, y_cursor = 20, 20
         for sensor in sensors.get_vcnl_4000_set():
             lux_view = LuxSensorDataView.create_view(self._display, sensor.get_lux_sensor(), self._settings_key)
-            # self.add_component(lux_view)
-            distance_view = DistanceSensorDataView.create_view(self._display, sensor.get_distance_sensor(),
-                                                               self._settings_key)
-            # self.add_component(distance_view)
+            view_width, view_height = lux_view._frame.winfo_reqwidth(), lux_view._frame.winfo_reqheight()
+            self.add_component(lux_view, x_cursor, y_cursor)
+            distance_view = DistanceSensorDataView.create_view(
+                self._display, sensor.get_distance_sensor(), self._settings_key
+            )
+            self.add_component(distance_view, x_cursor, y_cursor + 90)
+            x_cursor += view_width
         for led in sensors.get_led_set():
             # led_view = LedDataView.create_view(self._display, led, self._settings_key)
             pass
