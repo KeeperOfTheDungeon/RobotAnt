@@ -16,7 +16,7 @@ class HeadSensorsDataView(DeviceView):
     def make_display(self, robot_name: str, head_sensors: HeadSensors):
         self.set_device(robot_name, head_sensors)
 
-        # WIP
+        # TODO
         # for sensor in head_sensors.getMlx90614Set():
         #     view = TemperatureSensorDataView.create_view(self._display, sensor.get_ambient_sensor(), self._settings_key)
         #     view = TemperatureSensorDataView.create_view(self._display, sensor.get_object_sensor(), self._settings_key)
@@ -30,8 +30,8 @@ class HeadSensorsDataView(DeviceView):
             view_width, view_height = view._frame.winfo_reqwidth(), view._frame.winfo_reqheight()
             x_cursor += view_width + 10
 
-        # WIP
-        #for sensor in head_sensors.get_bmp085_set():
+        # TODO
+        # for sensor in head_sensors.get_bmp085_set():
         #    view = TemperatureSensorDataView.create_view(
         #        self._display, sensor.get_temperature_sensor(), self._settings_key
         #    )
@@ -49,9 +49,8 @@ class HeadSensorsDataView(DeviceView):
         self.make_display(robot.get_name(), sensors)
         return True
 
-    """ TODO
-    def add_detector(self, detector: DigitalDetector) -> ComponentView:
-        if detector is None:
-            return MissingComponentView(DigitalDetector.__name__)
-        return DetectorValueView(detector.get_value(), False)
-    """
+    # TODO
+    # def add_detector(self, detector: DigitalDetector) -> ComponentView:
+    #     if detector is None:
+    #         return MissingComponentView(DigitalDetector.__name__)
+    #     return DetectorValueView(detector.get_value(), False)

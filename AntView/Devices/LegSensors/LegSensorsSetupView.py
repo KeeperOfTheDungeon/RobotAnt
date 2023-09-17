@@ -25,9 +25,8 @@ class LegSensorsSetupView(DeviceView):
         self.make_display(robot.get_name(), sensors)
         return True
 
-    """ TODO
-    def add_detector(self, detector: DigitalDetector) -> ComponentView:
-        if detector is None:
-            return MissingComponentView(DigitalDetector.__name__)
-        return DetectorValueView(detector.get_value(), False)
-    """
+    # TODO
+    # def add_detector(self, detector: DigitalDetector) -> ComponentView:
+    #     if detector is None:
+    #         return MissingComponentView(DigitalDetector.__name__)
+    #     return DetectorValueView(detector.get_value(), False)
