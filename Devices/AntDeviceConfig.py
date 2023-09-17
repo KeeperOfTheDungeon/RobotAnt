@@ -1,4 +1,3 @@
-# from RoboControl.Robot.AbstractRobot.AbstractDeviceConfig import AbstractDeviceConfig
 from RoboControl.Robot.AbstractRobot.Config.DeviceConfig import DeviceConfig
 
 

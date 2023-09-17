@@ -1,6 +1,9 @@
+from typing import List
+
 from Devices.HeadSensors.HeadSensorsProtocol import HeadSensorsProtocol
 from Devices.HeadSensors.HeadSensorsVcnl4020Set import HeadSensorsVcnl4020Set
 from RoboControl.Robot.Device.RobotDevice import RobotDevice
+from RoboControl.Robot.Value.ComponentValue import ComponentValue
 
 
 class HeadSensors(RobotDevice):
@@ -8,9 +11,15 @@ class HeadSensors(RobotDevice):
     def build(self):
         self._protocol = HeadSensorsProtocol(self)
 
-        protocol = self._protocol.get_vcnl4000_protocol()
-        self._vcnl_4020_set = HeadSensorsVcnl4020Set(protocol)
+        # self.aquisators = HeadSensorsDataAquisator.aquisators
+
+        self._vcnl_4020_set = HeadSensorsVcnl4020Set(self._protocol.get_vcnl4020_protocol())
         self.add_components(self._vcnl_4020_set)
+        # self._mxl90614_set = HeadMlx90614Set(self._protocol.get_mlx90614_protocol())
+        # self.add_components(self._mxl90614_set)
+        # self._bmp085_sensor_set = Bmp085Set(self._protocol.get_bmp085_protocol())
+        # self.add_components(self._bmp085_sensor_set)
+        # self._servos = AnalogServoServoSet()
 
         self.build_protocol()
 
@@ -28,170 +37,37 @@ class HeadSensors(RobotDevice):
     def get_vcnl_4000_set(self):
         return self._vcnl_4020_set
 
+    def get_mxl90614_set(self):
+        raise ValueError("WIP HeadMlx90614Set")
+        return self._mxl90614_set
+
+    def get_bmp085_set(self):
+        raise ValueError("WIP Bmp085Set")
+        return self._bmp085_sensor_set
+
     def _load_setup(self):
         self._vcnl_4020_set.load_settings()
+        # self._mxl90614_set.load_settings()
+        # self._bmp085Sensor_set.load_settings()
 
+    def get_servos(self) -> "AnalogServoServoSet":
+        raise ValueError("WIP AnalogServoServoSet")
+        return self._servos
 
-"""package de.hska.lat.ant_IIIb.devices.headSensors;
+    def get_input_values(self) -> List[ComponentValue]:
+        values = []
+        for sensor in self.get_mxl90614_set():
+            values.append(sensor.get_ambient_value())
+            values.append(sensor.get_object_value())
+        values += self.get_bmp085_set().get_values()
+        values += self.get_mxl90614_set().get_values()
+        values += self.get_vcnl_4000_set().get_values()
+        return values
 
-
-HeadSensorsVcnl4020
-
-
-
-
-
-
-import de.hska.lat.ant_IIIb.devices.headSensors.components.HeadMlx90614Set;
-import de.hska.lat.ant_IIIb.devices.headSensors.components.HeadSensorsVcnl4000Set;
-import de.hska.lat.robot.component.temperatureSensor.mlx90614.Mlx90614Set;
-
-
-import de.hska.lat.robot.component.actor.servo.analogServo.AnalogServoServoSet;
-import de.hska.lat.robot.component.sensor.bmp085.Bmp085Set;
-
-
-import de.hska.lat.robot.device.DeviceEventNotifier;
-import de.hska.lat.robot.device.DeviceMetaData;
-import de.hska.lat.robot.device.RobotDevice;
-
-
-
-
-
-public class HeadSensors extends RobotDevice<DeviceEventNotifier, HeadSensorsProtocol >
-{
-    
-    /**
-     * @uml.property  name="servos"
-     */
-    protected AnalogServoServoSet	servos;
-    
-    /**
-     * @uml.property  name="vcnl4000set"
-     * @uml.associationEnd  multiplicity="(1 1)"
-     */
-    protected HeadSensorsVcnl4000Set vcnl4000set;
-    
-    /**
-     * @uml.property  name="mxl90614Set"
-     */
-    protected HeadMlx90614Set mxl90614Set;
-    
-    /**
-     * @uml.property  name="bmp085SensorSet"
-     * @uml.associationEnd  multiplicity="(1 1)"
-     */
-    protected Bmp085Set bmp085SensorSet;
-    
-    
-    
-public HeadSensors(DeviceMetaData metaData)
-{
-    super(metaData);
-    
-    
-
-    this.aquisators = HeadSensorsDataAquisator.aquisators;
-    
-//	this.addBmp085Sensors(metaData);
-
-    
-    this.mxl90614Set = new HeadMlx90614Set(HeadSensorsProtocol.getMlx90614Protocol(this.getId()));
-    this.addComponentSet(this.mxl90614Set );
-    
-    this.vcnl4000set = new HeadSensorsVcnl4000Set(HeadSensorsProtocol.getVcnl4000Protocol(this.getId()));
-    this.addComponentSet(this.vcnl4000set );
-    
-    
-    
-    this.protocol=new HeadSensorsProtocol(this);
-
-}
-
-
-
-
-
-
-/*
-protected void addBmp085Sensors(HeadSensorsMetaData metaData)
-{
-    
-    this.bmp085SensorSet = new Bmp085Set(metaData.getBmp085data(),HeadSensorsProtocol.getBmp085Protocol(this.getId()));
-    this.addComponentSet(this.bmp085SensorSet);
-}
-
-*/
-
-
-public void loadSetup()
-{
-    
-    
-    this.mxl90614Set.loadSettings();
-    this.vcnl4000set.loadSettings();
-//	this.bmp085SensorSet.loadSettings();
-    
-    
-}
-
-public Mlx90614Set getMlx90614Set()
-{
-    return(this.mxl90614Set);
-    
-}
-
-
-
-public HeadSensorsVcnl4000Set getVcnl4000Set()
-{
-    return (this.vcnl4000set);
-}
-
-
-
-public Bmp085Set getBmp085Set()
-{
-    return (this.bmp085SensorSet);
-}
-
-
-
-/*
-@Override
-public ArrayList<ComponentValue<?>> getInputValues()
-{
-    ArrayList<ComponentValue<?>> values = new ArrayList<ComponentValue<?>>();
-
-    
-    for (Mlx90614 sensor: this.mxl90614Set)
-    {
-        values.add(sensor.getAmbientValue());
-        values.add(sensor.getObjectValue());
-    }
-    
-    
-
-    values.addAll(this.bmp085SensorSet.getValues());
-    
-    values.addAll(this.mxl90614Set.getValues());
-    
-    values.addAll(this.vcnl4000set.getValues());
-    return(values);
-}
-
-*/
-
-/**
- * @return
- * @uml.property  name="servos"
- */
-public AnalogServoServoSet getServos()
-{
-    return (this.servos);
-}
-
-
-}
-"""
+    def add_bmp085_sensors(self, meta_data: "HeadSensorsMetaData") -> None:
+        raise ValueError("WIP Bmp085Set")
+        self._bmp085_sensor_set = Bmp085Set(
+            meta_data.get_bmp085_data(),
+            HeadSensorsProtocol.get_bmp085_protocol(self.get_id())
+        )
+        self.add_components(super().get_bmp085_set())

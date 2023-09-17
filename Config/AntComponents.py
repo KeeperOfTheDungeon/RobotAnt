@@ -1,148 +1,362 @@
 from Devices.AntDeviceConfig import AntDeviceConfig
-from RoboControl.Robot.AbstractRobot.AbstractComponentList import AbstractComponentList
-from RoboControl.Robot.AbstractRobot.Config.ComponentConfig import ComponentConfig
+from RoboControl.Robot.Device.Generic.DataHub.DataHub import DataHub
 
-# ************* Leg Sensors ******************
+ROBOT_NAME = {  # ROBOT_NAME(,0,DataHub.ID),
+    "name": DataHub.ROBOT_NAME,
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": DataHub.ID,
+}
 
-FRONT_LEFT_LEG_LED = {
+ROBOT_NAME2 = {  # ROBOT_NAME2("",1,DataHub.ID),
+    "name": DataHub.ROBOT_NAME,
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": DataHub.ID,
+}
+
+# TODO typo
+RC5_TRANSCIVER = {  # RC5_TRANSCIVER (Rc5TransciverConfiguration.RC5_TRANSCIVER),  # java file missing?
+    "name": None,
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.IR_COM.get_id(),
+}
+
+PIXY_CAM_1 = {  # PIXY_CAM_1 (PixyControllerConfiguration.PIXY_CAM_1),  # java file missing?
+    "name": None,
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.PIXY_CONTROLLER.get_id(),
+}
+
+# ************* LegSensorsConfiguration ******************
+
+
+FRONT_LEFT_LEG_LED = {  # FRONT_LEFT_LEG_LED ("front left",1),
     "name": "front left",
     "local_id": 0,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-FRONT_RIGHT_LEG_LED = {
+FRONT_RIGHT_LEG_LED = {  # FRONT_RIGHT_LEG_LED ("front right",4),
     "name": "front right",
     "local_id": 1,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-CENTER_LEFT_LEG_LED = {
+CENTER_LEFT_LEG_LED = {  # CENTER_LEFT_LEG_LED ("center left",0),
     "name": "center left",
     "local_id": 2,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-CENTER_RIGHT_LEG_LED = {
+CENTER_RIGHT_LEG_LED = {  # CENTER_RIGHT_LEG_LED ("center right",3),
     "name": "center right",
     "local_id": 3,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-BACK_LEFT_LEG_LED = {
+BACK_LEFT_LEG_LED = {  # BACK_LEFT_LEG_LED ("back left",2),
     "name": "back left",
     "local_id": 4,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-BACK_RIGHT_LEG_LED = {
+BACK_RIGHT_LEG_LED = {  # BACK_RIGHT_LED ("cack right",5),
     "name": "back right",
     "local_id": 5,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
 # light sensors
-FRONT_LEFT_LEG_VCNL4020 = {
+
+FRONT_LEFT_LEG_VCNL4020 = {  # FRONT_LEFT_LEG_VCNL4020 ("front left",1),
     "name": "center left",
     "local_id": 0,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-FRONT_RIGHT_LEG_VCNL4020 = {
+FRONT_RIGHT_LEG_VCNL4020 = {  # FRONT_RIGHT_LEG_4020 ("front right",4),
     "name": "front right",
     "local_id": 1,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-CENTER_LEFT_LEG_VCNL4020 = {
+CENTER_LEFT_LEG_VCNL4020 = {  # CENTER_LEFT_LEG_4020 ("center left",0),
     "name": "center left",
     "local_id": 2,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-CENTER_RIGHT_LEG_VCNL4020 = {
+CENTER_RIGHT_LEG_VCNL4020 = {  # CENTER_RIGHT_LEG_VCNL4020 ("center right",3),
     "name": "center right",
     "local_id": 3,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-BACK_LEFT_LEG_VCNL4020 = {
+BACK_LEFT_LEG_VCNL4020 = {  # BACK_LEFT_LEG_VCNL4020 ("back left",2),
     "name": "back left",
     "local_id": 4,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-BACK_RIGHT_LEG_VCNL4020 = {
+BACK_RIGHT_LEG_VCNL4020 = {  # BACK_RIGHT_LEG_VCNL4020 ("cack right",5),
     "name": "back right",
     "local_id": 5,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_SENSORS.get_id(),
 }
 
-# ************* Head ******************
+# ************* HeadSensorsConfiguration ******************
 
+HEAD_SERVO = {  # HEAD_SERVO ("head servo",0),
+    "name": "head servo",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
 
-HEAD_VCNL_4000_LEFT_SIDE = {
+HEAD_LEFT_MLX90614 = {  # HEAD_LEFT_MLX90614("left mlx90614",0),
+    "name": "left mlx90614",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+HEAD_RIGHT_MLX90614 = {  # HEAD_RIGHT_MLX90614("right mlx90614",1),
+    "name": "right mlx90614",
+    "local_id": 1,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+
+TEMPERATURE_0 = {  # TEMPERATURE_0("t0 bmp",0),
+    "name": "t1 bmp",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+TEMPERATURE_1 = {  # TEMPERATURE_1("t1 bmp",1),
+    "name": "t1 bmp",
+    "local_id": 1,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+TEMPERATURE_2 = {  # TEMPERATURE_2("t1 bmp",2),
+    "name": "t1 bmp",
+    "local_id": 2,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+TEMPERATURE_3 = {  # TEMPERATURE_3("t1 bmp",3),
+    "name": "t1 bmp",
+    "local_id": 3,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+
+PRESURE_0 = {  # PRESURE_0("p0",0),
+    "name": "p0",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+PRESURE_1 = {  # PRESURE_1("p1",1),
+    "name": "p1",
+    "local_id": 1,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+PRESURE_2 = {  # PRESURE_2("p2",2),
+    "name": "p2",
+    "local_id": 2,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+PRESURE_3 = {  # PRESURE_3("p3",3),
+    "name": "p3",
+    "local_id": 3,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
+}
+
+HEAD_VCNL_4000_LEFT_SIDE = {  # HEAD_VCNL4000_LEFT_SIDE("left side",0),
     "name": "left side",
     "local_id": 0,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
 }
 
-HEAD_VCNL_4000_LEFT = {
+HEAD_VCNL_4000_LEFT = {  # HEAD_VCNL4000_LEFT("left",1),
     "name": "left",
     "local_id": 1,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
 }
 
-HEAD_VCNL_4000_CENTER = {
+HEAD_VCNL_4000_CENTER = {  # HEAD_VCNL4000_CENTER("center",2),
     "name": "center",
     "local_id": 2,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
 }
-HEAD_VCNL_4000_RIGHT = {
+HEAD_VCNL_4000_RIGHT = {  # HEAD_VCNL4000_RIGHT("right",3),
     "name": "right",
     "local_id": 3,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
 }
-HEAD_VCNL_4000_RIGHT_SIDE = {
+HEAD_VCNL_4000_RIGHT_SIDE = {  # HEAD_VCNL4000_RIGHT_SIDE("right side",4),
     "name": "right side",
     "local_id": 4,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.HEAD_SENSORS.get_id(),
 }
 
-LEG_CONTROLLER_LEFT_SERVO = {
+# ************* LegControllerConfiguration ******************
+
+# LEFT_TEMPERATURE_SENSOR (LegControllerConfiguration.LEFT_TEMPERATURE_SENSOR),
+# CENTER_TEMPERATURE_SENSOR (LegControllerConfiguration.CENTER_TEMPERATURE_SENSOR),
+# RIGHT_TEMPERATURE_SENSOR (LegControllerConfiguration.RIGHT_TEMPERATURE_SENSOR),
+# REGULATOR_TEMPERATURE_SENSOR (LegControllerConfiguration.REGULATOR_TEMPERATURE_SENSOR),
+
+MOTION_CONTROLLER = {  # FRONT_LEFT_LEG_LED ("front left",1),
+    "name": "motion controller",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_CONTROLLER.get_id(),
+}
+
+LEG_CONTROLLER_LEFT_SERVO = {  # LEFT_SERVO ("left",0),
     "name": "left",
     "local_id": 0,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_CONTROLLER.get_id(),
 }
-LEG_CONTROLLER_CENTER_SERVO = {
+LEG_CONTROLLER_CENTER_SERVO = {  # CENTER_SERVO ("center",1),
     "name": "center",
     "local_id": 1,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_CONTROLLER.get_id(),
 }
-LEG_CONTROLLER_RIGHT_SERVO = {
+LEG_CONTROLLER_RIGHT_SERVO = {  # RIGHT_SERVO ("right",2),
     "name": "right",
     "local_id": 2,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_CONTROLLER.get_id(),
 }
-LEG_CONTROLLER_HEAD_SERVO = {
+LEG_CONTROLLER_HEAD_SERVO = {  # HEAD_SERVO ("head",3),
     "name": "head",
     "local_id": 3,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_CONTROLLER.get_id(),
 }
 
-LEFT_SERVO_CURRENT = {
+LEFT_SERVO_CURRENT = {  # LEFT_SERVO_CURRENT ("left",0),
     "name": "left",
     "local_id": 0,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_CONTROLLER.get_id(),
 }
-CENTER_SERVO_CURRENT = {
+CENTER_SERVO_CURRENT = {  # CENTER_SERVO_CURRENT ("center",1),
     "name": "center",
     "local_id": 1,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_CONTROLLER.get_id(),
 }
-RIGHT_SERVO_CURRENT = {
+RIGHT_SERVO_CURRENT = {  # RIGHT_SERVO_CURRENT ("right",2),
     "name": "right",
     "local_id": 2,
-    "global_id": 0
+    "global_id": 0,
+    "device_id": AntDeviceConfig.LEG_CONTROLLER.get_id(),
+}
+# ************* TailBoardConfiguration ******************
+
+TAIL_VCNL4020_LEFT = {  # TAIL_VCNL4020_LEFT("left vcnl4020", 0),
+    "name": "left vcnl4020",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+TAIL_VCNL4020_CENTER = {  # TAIL_VCNL4020_CENTER("center vcnl4020", 1 ),
+    "name": "center vcnl4020",
+    "local_id": 1,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+TAIL_VCNL4020_RIGHT = {  # TAIL_VCNL4020_RIGHT("right vcnl4020", 2),
+    "name": "right vcnl4020",
+    "local_id": 2,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+
+TAIL_TMP006_LEFT = {  # TAIL_TMP006_LEFT("left tmp006", 0),
+    "name": "left tmp006",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+TAIL_TMP006_CENTER = {  # TAIL_TMP006_CENTER("center tmp006", 1 ),
+    "name": "center tmp006",
+    "local_id": 1,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+TAIL_TMP006_RIGHT = {  # TAIL_TMP006_RIGHT("right tmp006", 2),
+    "name": "right tmp006",
+    "local_id": 2,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+
+ANT_MPU9150 = {  # ANT_MPU9150 ("MPU9150", 0),
+    "name": "MPU9150",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+ANT_IMU = {  # ANT_IMU ("IMU", 0),
+    "name": "IMU",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+ANT_LOCATOR = {  # ANT_LOCATOR ("locator",0 ),
+    "name": "locator",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+ANT_HEADING = {  # ANT_HEADING ("heading", 0),
+    "name": "heading",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+
+TAIL_LEFT_LED = {  # TAIL_LEFT_LED ("led left", 0),
+    "name": "led left",
+    "local_id": 0,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
+}
+TAIL_RIGHT_LED = {  # TAIL_RIGHT_LED ("led right", 1),
+    "name": "led right",
+    "local_id": 1,
+    "global_id": 0,
+    "device_id": AntDeviceConfig.TAIL_BOARD.get_id(),
 }
 
 
@@ -151,236 +365,22 @@ class AntComponents:
         pass
 
 
-"""
-    
+class AntComponent:
+    def __init__(self, data: dict):
+        self._data = data
 
+    @property
+    def local_id(self) -> int:
+        return self._data["local_id"]
 
+    @property
+    def name(self) -> int:
+        return self._data["name"]
 
-package de.hska.lat.ant_IIIb.metaData;
+    @property
+    def device_id(self) -> int:
+        return self._data["device_id"]
 
-
-import de.hska.lat.robot.component.ComponentMetaData;
-import de.hska.lat.robot.device.generic.dataHub.DataHub;
-import de.hska.lat.ant_IIIb.devices.headSensors.HeadSensorsConfiguration;
-import de.hska.lat.ant_IIIb.devices.irCom.Rc5TransciverConfiguration;
-import de.hska.lat.ant_IIIb.devices.legController.LegControllerConfiguration;
-import de.hska.lat.ant_IIIb.devices.legSensors.components.LegSensorsConfiguration;
-import de.hska.lat.ant_IIIb.devices.pixyController.PixyControllerConfiguration;
-import de.hska.lat.ant_IIIb.devices.tailBoard.TailBoardConfiguration;
-
-public enum AntComponents {
-    
-    ROBOT_NAME(DataHub.ROBOT_NAME,0,DataHub.ID),
-    ROBOT_NAME2("",1,DataHub.ID),
-    
-    LEFT_SERVO (LegControllerConfiguration.LEFT_SERVO),
-    CENTER_SERVO (LegControllerConfiguration.CENTER_SERVO),
-    RIGHT_SERVO (LegControllerConfiguration.RIGHT_SERVO),
-    HEAD_SERVO (LegControllerConfiguration.HEAD_SERVO),
-
-    LEFT_TEMPERATURE_SENSOR (LegControllerConfiguration.LEFT_TEMPERATURE_SENSOR),
-    CENTER_TEMPERATURE_SENSOR (LegControllerConfiguration.CENTER_TEMPERATURE_SENSOR),
-    RIGHT_TEMPERATURE_SENSOR (LegControllerConfiguration.RIGHT_TEMPERATURE_SENSOR),
-    REGULATOR_TEMPERATURE_SENSOR (LegControllerConfiguration.REGULATOR_TEMPERATURE_SENSOR),
-    
-    
-
-    
-
-    ANT_MPU9150 (TailBoardConfiguration.ANT_MPU9150),
-    ANT_IMU (TailBoardConfiguration.ANT_IMU),
-    ANT_LOCATOR (TailBoardConfiguration.ANT_LOCATOR ),
-    ANT_HEADING (TailBoardConfiguration.ANT_HEADING),
-    
-    TAIL_VCNL4020_LEFT(TailBoardConfiguration.TAIL_VCNL4020_LEFT),
-    TAIL_VCNL4020_CENTER(TailBoardConfiguration.TAIL_VCNL4020_CENTER),
-    TAIL_VCNL4020_RIGHT(TailBoardConfiguration.TAIL_VCNL4020_RIGHT),
-    
-    TAIL_TMP006_LEFT(TailBoardConfiguration.TAIL_TMP006_LEFT),
-    TAIL_TMP006_CENTER(TailBoardConfiguration.TAIL_TMP006_CENTER),
-    TAIL_TMP006_RIGHT(TailBoardConfiguration.TAIL_TMP006_RIGHT),
-        
-
-    TAIL_LEFT_LED (TailBoardConfiguration.TAIL_LEFT_LED),
-    TAIL_RIGHT_LED (TailBoardConfiguration.TAIL_RIGHT_LED),
-    
-     MOTION_CONTROLLER("motion controller",0,AntDeviceId.LEG_CONTROLLER.getId()),
-        
-        
-            
-    HEAD_LEFT_MLX90614 (HeadSensorsConfiguration.HEAD_LEFT_MLX90614),
-    HEAD_RIGHT_MLX90614 (HeadSensorsConfiguration.HEAD_RIGHT_MLX90614),
-    
-            
-    HEAD_VCNL4000_LEFT_SIDE (HeadSensorsConfiguration.HEAD_VCNL4000_LEFT_SIDE),
-    HEAD_VCNL4000_LEFT(	HeadSensorsConfiguration.HEAD_VCNL4000_LEFT),
-    HEAD_VCNL4000_CENTER(HeadSensorsConfiguration.HEAD_VCNL4000_CENTER),
-    HEAD_VCNL4000_RIGHT(HeadSensorsConfiguration.HEAD_VCNL4000_RIGHT),
-    HEAD_VCNL4000_RIGHT_SIDE(HeadSensorsConfiguration.HEAD_VCNL4000_RIGHT_SIDE),
-            
-        
-    
-
-    TEMPERATURE_0(
-            HeadSensorsConfiguration.TEMPERATURE_0.getName(),
-            HeadSensorsConfiguration.TEMPERATURE_0.getLocalId(),
-            AntDeviceId.HEAD_SENSORS.getId()),
-
-    TEMPERATURE_1(
-            HeadSensorsConfiguration.TEMPERATURE_1.getName(),
-            HeadSensorsConfiguration.TEMPERATURE_1.getLocalId(),
-            AntDeviceId.HEAD_SENSORS.getId()),
-
-    TEMPERATURE_2(
-            HeadSensorsConfiguration.TEMPERATURE_2.getName(),
-            HeadSensorsConfiguration.TEMPERATURE_2.getLocalId(),
-            AntDeviceId.HEAD_SENSORS.getId()),
-
-    TEMPERATURE_3(
-            HeadSensorsConfiguration.TEMPERATURE_3.getName(),
-            HeadSensorsConfiguration.TEMPERATURE_3.getLocalId(),
-            AntDeviceId.HEAD_SENSORS.getId()),
-
-            
-    PRESURE_0(
-            HeadSensorsConfiguration.PRESURE_0.getName(),
-            HeadSensorsConfiguration.PRESURE_0.getLocalId(),
-            AntDeviceId.HEAD_SENSORS.getId()),
-
-    PRESURE_1(
-            HeadSensorsConfiguration.PRESURE_1.getName(),
-            HeadSensorsConfiguration.PRESURE_1.getLocalId(),
-            AntDeviceId.HEAD_SENSORS.getId()),			
-
-    PRESURE_2(
-            HeadSensorsConfiguration.PRESURE_2.getName(),
-            HeadSensorsConfiguration.PRESURE_2.getLocalId(),
-            AntDeviceId.HEAD_SENSORS.getId()),
-
-    PRESURE_3(
-            HeadSensorsConfiguration.PRESURE_3.getName(),
-            HeadSensorsConfiguration.PRESURE_3.getLocalId(),
-            AntDeviceId.HEAD_SENSORS.getId()), 					
-                
-
-
-
-
-
-    
-    RC5_TRANSCIVER (Rc5TransciverConfiguration.RC5_TRANSCIVER),
-    
-    PIXY_CAM_1 (PixyControllerConfiguration.PIXY_CAM_1),
-
-            ;
-
-    
-    
-    /**
-     * @uml.property  name="localId"
-     */
-    private final int localId;
-    /**
-     * @uml.property  name="deviceId"
-     */
-    private final int deviceId;
-    /**
-     * @uml.property  name="name"
-     */
-    private final String name;
-    
-    
-    
-    
-private AntComponents(String name,int localId, int deviceId)
-{
-    this.localId=localId;
-    this.deviceId = deviceId;
-    this.name=name;
-
-    
-}
-    
-
-private AntComponents(HeadSensorsConfiguration configuration)
-{
-    this.localId = configuration.getLocalId();
-    this.deviceId = AntDeviceId.HEAD_SENSORS.getId();
-    this.name = configuration.getName();
-
-    
-}
-
-private AntComponents(TailBoardConfiguration configuration)
-{
-    this.localId = configuration.getLocalId();
-    this.deviceId = AntDeviceId.TAIL_BOARD.getId();
-    this.name = configuration.getName();
-
-}	
-
-
-private AntComponents(LegSensorsConfiguration configuration)
-{
-    this.localId = configuration.getLocalId();
-    this.deviceId = AntDeviceId.LEG_SENSORS.getId();
-    this.name = configuration.getName();
-
-}	
-
-
-private AntComponents(LegControllerConfiguration configuration)
-{
-    this.localId = configuration.getLocalId();
-    this.deviceId = AntDeviceId.LEG_CONTROLLER.getId();
-    this.name = configuration.getName();
-
-}
-
-private AntComponents(PixyControllerConfiguration configuration)
-{
-    this.localId = configuration.getLocalId();
-    this.deviceId = AntDeviceId.PIXY_CONTROLLER.getId();
-    this.name = configuration.getName();
-}
-
-private AntComponents(Rc5TransciverConfiguration configuration)
-{
-    this.localId = configuration.getLocalId();
-    this.deviceId = AntDeviceId.IR_COM.getId();
-    this.name = configuration.getName();
-}
-
-
-/**
- * @return
- * @uml.property  name="localId"
- */
-public int getLocalId()
-{
-    return(this.localId);
-}
-
-public int getGlobalId()
-{
-    //return(this.globalId);
-    return(this.ordinal());
-}
-        
-/**
- * @return
- * @uml.property  name="name"
- */
-public String getName()
-{
-    return(this.name);
-}
-
-
-public ComponentMetaData getMetaData()
-{
-    return(new ComponentMetaData(this.name,this.name(),this.ordinal(),this.localId, this.deviceId));
-}
-    
-}
-"""
+    @property
+    def global_id(self) -> int:
+        return self._data["global_id"]
