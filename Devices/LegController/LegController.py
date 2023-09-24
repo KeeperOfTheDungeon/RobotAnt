@@ -1,7 +1,7 @@
 from Config.AntComponents import AntComponents, MOTION_CONTROLLER
 from Devices.LegController.LegControllerCurrentSensors import LegControllerCurrentSensors
 from Devices.LegController.LegControllerProtocol import LegControllerProtocol
-from Devices.LegController.LegControllerServoSet import LegControllerServos
+from Devices.LegController.LegControllerServoSet import LegControllerServoSet
 from RoboControl.Robot.Device.RobotDevice import RobotDevice
 
 from RoboControl.Robot.Device.RobotDevice import RobotDevice
@@ -9,7 +9,7 @@ from RoboControl.Robot.Device.RobotDevice import RobotDevice
 
 class LegController(RobotDevice):
     _current_sensor_set: LegControllerCurrentSensors
-    _servo_set: LegControllerServos
+    _servo_set: LegControllerServoSet
     _temperature_sensor_set: "LegControllerLm75"
     _motion_controller: "AntMotionController"
 
@@ -18,7 +18,7 @@ class LegController(RobotDevice):
 
         self._protocol = LegControllerProtocol(self)
 
-        self._servo_set = LegControllerServos(self._protocol.get_servo_protocol())
+        self._servo_set = LegControllerServoSet(self._protocol.get_servo_protocol())
         self.add_components(self._servo_set)
 
         self._current_sensor_set = LegControllerCurrentSensors(self._protocol.get_current_protocol())
@@ -39,7 +39,7 @@ class LegController(RobotDevice):
             self._remote_message_processor_list.extend(hw_set.get_message_processors())
             self._remote_stream_processor_list.extend(hw_set.get_stream_processors())
 
-    def get_servo_set(self) -> LegControllerServos:
+    def get_servo_set(self) -> LegControllerServoSet:
         return self._servo_set
 
     def get_current_sensors(self) -> LegControllerCurrentSensors:

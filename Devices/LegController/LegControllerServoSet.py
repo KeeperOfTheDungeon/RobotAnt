@@ -2,7 +2,7 @@ from Config import AntComponents
 from RoboControl.Robot.Component.Actor.servo.ServoSet import ServoSet
 
 
-class LegControllerServos(ServoSet):
+class LegControllerServoSet(ServoSet):
     def __init__(self, protocol):
         AntComponents.LEG_CONTROLLER_LEFT_SERVO["protocol"] = protocol
         AntComponents.LEG_CONTROLLER_CENTER_SERVO["protocol"] = protocol
