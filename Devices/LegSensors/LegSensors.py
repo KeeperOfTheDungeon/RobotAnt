@@ -1,3 +1,4 @@
+from Devices.LegSensors.LegSensorsDataAquisator import LegSensorsDataAquisator
 from Devices.LegSensors.LegSensorsLedSet import LegSensorsLedSet
 from Devices.LegSensors.LegSensorsProtocol import LegSensorsProtocol
 from Devices.LegSensors.LegSensorsVcnl4000 import LegSensorsVcnl4000
@@ -11,7 +12,7 @@ class LegSensors(RobotDevice):
     def build(self):
         self._protocol = LegSensorsProtocol(self)
 
-        # self.aquisators = LegSensorsDataAquisator.aquisators
+        self._aquisators = LegSensorsDataAquisator.get_data_aquisators()
 
         self._led_set = LegSensorsLedSet(self._protocol.get_led_protocol())
         self.add_components(self._led_set)
@@ -41,9 +42,3 @@ class LegSensors(RobotDevice):
 
     def _load_setup(self):
         self._vcnl_4000_set.load_settings()
-
-    def get_data_aquisators(self):
-        aquisators = super().get_data_aquisators()
-        aquisators.extend(["lux",
-                           "distance"])
-        return aquisators

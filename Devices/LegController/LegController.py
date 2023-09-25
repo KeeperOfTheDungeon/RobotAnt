@@ -1,5 +1,6 @@
 from Config.AntComponents import AntComponents, MOTION_CONTROLLER
 from Devices.LegController.LegControllerCurrentSensors import LegControllerCurrentSensors
+from Devices.LegController.LegControllerDataAquisator import LegControllerDataAquisator
 from Devices.LegController.LegControllerProtocol import LegControllerProtocol
 from Devices.LegController.LegControllerServoSet import LegControllerServoSet
 from RoboControl.Robot.Device.RobotDevice import RobotDevice
@@ -14,7 +15,7 @@ class LegController(RobotDevice):
     _motion_controller: "AntMotionController"
 
     def build(self):
-        # self.aquisators = LegControllerDataAquisator.aquisators
+        self._aquisators = LegControllerDataAquisator.get_data_aquisators()
 
         self._protocol = LegControllerProtocol(self)
 
@@ -48,20 +49,6 @@ class LegController(RobotDevice):
     def get_temperature_sensors(self) -> "LegControllerLm75":
         raise ValueError("WIP LegControllerLm75")
         return self._temperature_sensor_set
-
-    def get_data_aquisators(self):
-        aquisators = super().get_data_aquisators()
-        aquisators.extend([
-            "servo Positionse",  # TODO typo
-            "Servo Destinations",
-            "Servo Status",
-            "current consumption",
-            "current max consumption",
-            "current Total consumption",
-            "servo raw analogue values",
-            "temperatures"
-        ])
-        return aquisators
 
     def load_setup(self):
         for servo in self._servo_set:

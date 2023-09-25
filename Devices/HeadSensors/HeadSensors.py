@@ -1,5 +1,6 @@
 from typing import List
 
+from Devices.HeadSensors.HeadSensorsDataAquisator import HeadSensorsDataAquisator
 from Devices.HeadSensors.HeadSensorsProtocol import HeadSensorsProtocol
 from Devices.HeadSensors.HeadSensorsVcnl4020Set import HeadSensorsVcnl4020Set
 from RoboControl.Robot.Device.RobotDevice import RobotDevice
@@ -11,7 +12,7 @@ class HeadSensors(RobotDevice):
     def build(self):
         self._protocol = HeadSensorsProtocol(self)
 
-        # self.aquisators = HeadSensorsDataAquisator.aquisators
+        self._aquisators = HeadSensorsDataAquisator.get_data_aquisators()
 
         self._vcnl_4020_set = HeadSensorsVcnl4020Set(self._protocol.get_vcnl4020_protocol())
         self.add_components(self._vcnl_4020_set)
@@ -28,11 +29,6 @@ class HeadSensors(RobotDevice):
         self._remote_command_processor_list.extend(self._vcnl_4020_set.get_command_processors())
         self._remote_message_processor_list.extend(self._vcnl_4020_set.get_message_processors())
         self._remote_stream_processor_list.extend(self._vcnl_4020_set.get_stream_processors())
-
-    def get_data_aquisators(self):
-        aquisators = super().get_data_aquisators()
-        aquisators.extend(["Mxl90614 ambient temperature", "Mxl90614 object temperature", "lux", "distance"])
-        return aquisators
 
     def get_vcnl_4000_set(self):
         return self._vcnl_4020_set
