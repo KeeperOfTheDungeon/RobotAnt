@@ -16,7 +16,7 @@ def main(do_gui: bool, do_cli: bool):
     if do_cli:
         available_ports = SerialConnection.get_ports()
         port = SerialConnection.port if SerialConnection.port in available_ports else available_ports[0].name
-        connection = SerialConnection().set_port(port)
+        connection = ant._connection.set_port(port)
         ant.connect(connection)
         ant.run()
 

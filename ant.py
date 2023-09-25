@@ -16,7 +16,7 @@ class Ant(Robot):
     def __init__(self):
         super().__init__("ant")
 
-        self._connection: Optional[Connection] = None
+        self._connection: Connection = SerialConnection()
         # FIXME these aren't actually optional
         #   a better way would be to return the values from add_devices and set them here
         self._data_hub: Optional[DataHub] = None
