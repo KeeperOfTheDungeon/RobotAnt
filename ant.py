@@ -1,5 +1,5 @@
 from time import sleep
-from typing import Optional
+# disabled for micropython  # from typing import Optional
 
 from Devices.AntDeviceConfig import AntDeviceConfig
 from Devices.HeadSensors.HeadSensors import HeadSensors
@@ -19,10 +19,10 @@ class Ant(Robot):
         self._connection: Connection = SerialConnection()
         # FIXME these aren't actually optional
         #   a better way would be to return the values from add_devices and set them here
-        self._data_hub: Optional[DataHub] = None
-        self._head_sensors: Optional[HeadSensors] = None
-        self._leg_sensors: Optional[LegSensors] = None
-        self._leg_controller: Optional[LegController] = None
+        self._data_hub: "Optional[DataHub]" = None
+        self._head_sensors: "Optional[HeadSensors]" = None
+        self._leg_sensors: "Optional[LegSensors]" = None
+        self._leg_controller: "Optional[LegController]" = None
 
     def run(self):
         while True:

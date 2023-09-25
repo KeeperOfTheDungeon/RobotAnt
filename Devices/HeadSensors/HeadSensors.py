@@ -1,4 +1,4 @@
-from typing import List
+# disabled for micropython  # from typing import List
 
 from Devices.HeadSensors.HeadSensorsDataAquisator import HeadSensorsDataAquisator
 from Devices.HeadSensors.HeadSensorsProtocol import HeadSensorsProtocol
@@ -50,7 +50,7 @@ class HeadSensors(RobotDevice):
         raise ValueError("WIP AnalogServoServoSet")
         return self._servos
 
-    def get_input_values(self) -> List[ComponentValue]:
+    def get_input_values(self) -> "List[ComponentValue]":
         values = []
         for sensor in self.get_mxl90614_set():
             values.append(sensor.get_ambient_value())
