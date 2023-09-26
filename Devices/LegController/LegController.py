@@ -51,14 +51,16 @@ class LegController(RobotDevice):
 
     def get_data_aquisators(self):
         aquisators = super().get_data_aquisators()
-        aquisators.extend(["servo Positionse",
-                           "Servo Destinations",
-                           "Servo Status",
-                           "current consumption",
-                           "current max consumption",
-                           "current Total consumption",
-                           "servo raw analogue values",
-                           "temperatures"])
+        aquisators.extend([
+            "servo Positionse",  # TODO typo
+            "Servo Destinations",
+            "Servo Status",
+            "current consumption",
+            "current max consumption",
+            "current Total consumption",
+            "servo raw analogue values",
+            "temperatures"
+        ])
         return aquisators
 
     def load_setup(self):
