@@ -61,7 +61,6 @@ STREAM_BMP085_TEMPERATURES = 0x24
 STREAM_BMP085_PRESURES = 0x25
 
 
-
 class HeadSensorsProtocol(DeviceProtocol):
     def __init__(self, device):
         super().__init__(device)
