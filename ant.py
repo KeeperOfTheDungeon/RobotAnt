@@ -23,6 +23,7 @@ class Ant(Robot):
         self._head_sensors: Optional[HeadSensors] = None
         self._leg_sensors: Optional[LegSensors] = None
         self._leg_controller: Optional[LegController] = None
+        self.add_devices()
 
     def run(self):
         while True:
@@ -32,7 +33,7 @@ class Ant(Robot):
     def connect(self, connection: SerialConnection) -> None:
         self._connection = connection
         super().connect(connection)
-        self.add_devices()
+        
 
     def add_device(self, device: RobotDevice) -> None:
         self._device_list.append(device)
