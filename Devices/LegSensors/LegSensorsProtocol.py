@@ -1,6 +1,4 @@
-from RoboControl.Robot.Component.Actor.Led.LedProtocol import LedProtocol
 from RoboControl.Robot.Device.Protocol.DeviceProtocol import DeviceProtocol
-from RoboControl.Robot.Device.remoteProcessor.RemoteProcessor import RemoteProcessor
 
 CMD_LED_SET_BRIGHTNESS = 0x30
 CMD_LED_GET_BRIGHTNESS = 0x31

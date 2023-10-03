@@ -14,7 +14,7 @@ class LegControllerDataAquisator(DeviceAquisators):
     def get_data_aquisators(cls):
         return super().get_data_aquisators() + [
             DataAquisator("servos positions", 10, AQUISATE_SERVOS_POSITIONS),
-            DataAquisator("servos destinationss", 10, AQUISATE_SERVOS_DESTINATIONS),
+            DataAquisator("servos destinations", 10, AQUISATE_SERVOS_DESTINATIONS),
             DataAquisator("servos status", 10, AQUISATE_SERVOS_STATUS),
             DataAquisator("current values", 10, AQUISATE_CURRENT_VALUES),
             DataAquisator("current consumptions", 10, AQUISATE_CURRENT_CONSUMPTIONS),

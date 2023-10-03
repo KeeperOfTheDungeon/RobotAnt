@@ -117,7 +117,7 @@ class HeadSensorsProtocol(DeviceProtocol):
         return protocol
 
     def get_vcnl4000_protocol(self):
-        protocol = self.get_vcnl4020_protocol
+        protocol = self.get_vcnl4020_protocol()
         protocol.update({
             # "cmd_getRawProximity": CMD_VCNL4000_GET_RAW_PROXIMITY,
             "msg_rawProximity": MSG_VCNL4000_RAW_PROXIMITY,

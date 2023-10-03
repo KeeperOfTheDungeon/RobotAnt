@@ -15,7 +15,7 @@ class Ant(Robot):
     def __init__(self):
         super().__init__("ant")
         self.add_devices()
-
+        self._connection: Connection = SerialConnection()
 
     def run(self):
         while True:

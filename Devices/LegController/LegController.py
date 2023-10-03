@@ -52,13 +52,13 @@ class LegController(RobotDevice):
 
     def load_setup(self):
         for servo in self._servo_set:
-            servo.remote_loadDefaults()
+            servo.remote_load_defaults()
             servo.remote_get_settings()
             servo.remote_get_servo_speed()
             servo.remote_get_servo_status()
 
         for current in self._current_sensor_set:
-            current.remote_getSettings()
+            current.remote_get_settings()
 
         for lm75 in self._temperature_sensor_set:
             lm75.remote_getSettings()
