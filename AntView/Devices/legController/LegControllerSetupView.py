@@ -17,14 +17,14 @@ class LegControllerSetupView(DeviceView):
         for servo in motion_controller.get_servo_set():
             view = ServoSetupView.create_view(self._display, servo, self._settings_key)
             self.add_component(view, x_cursor, y_cursor)
-            view_width, view_height = view._frame.winfo_reqwidth(), view._frame.winfo_reqheight()
+            view_width, view_height = view.get_frame.winfo_reqwidth(), view.get_frame.winfo_reqheight()
             x_cursor += view_width - 30
         return  # WIP
         x_cursor, y_cursor = 20, 170
         for current in motion_controller.get_current_sensors():
             view = CurrentSetupView.create_view(self._display, current, self._settings_key)
             self.add_component(view, x_cursor, y_cursor)
-            view_width, view_height = view._frame.winfo_reqwidth(), view._frame.winfo_reqheight()
+            view_width, view_height = view.get_frame.winfo_reqwidth(), view.get_frame.winfo_reqheight()
             x_cursor += view_width - 30
 
     def set_robot(self, robot: AbstractRobot) -> bool:

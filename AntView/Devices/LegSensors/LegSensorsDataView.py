@@ -22,7 +22,7 @@ class LegSensorsDataView(DeviceView):
         x_cursor, y_cursor = 20, 20
         for sensor in sensors.get_vcnl_4000_set():
             lux_view = LuxSensorDataView.create_view(self._display, sensor.get_lux_sensor(), self._settings_key)
-            view_width, view_height = lux_view._frame.winfo_reqwidth(), lux_view._frame.winfo_reqheight()
+            view_width, view_height = lux_view.get_frame().winfo_reqwidth(), lux_view.get_frame().winfo_reqheight()
             self.add_component(lux_view, x_cursor, y_cursor)
             distance_view = DistanceSensorDataView.create_view(
                 self._display, sensor.get_distance_sensor(), self._settings_key

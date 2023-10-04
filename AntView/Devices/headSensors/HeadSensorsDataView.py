@@ -27,7 +27,7 @@ class HeadSensorsDataView(DeviceView):
             self.add_component(view, x_cursor, y_cursor)
             view = DistanceSensorDataView.create_view(self._display, sensor.get_distance_sensor(), self._settings_key)
             self.add_component(view, x_cursor, y_cursor + 90)
-            view_width, view_height = view._frame.winfo_reqwidth(), view._frame.winfo_reqheight()
+            view_width, view_height = view.get_frame().winfo_reqwidth(), view.get_frame().winfo_reqheight()
             x_cursor += view_width + 10
 
         # TODO
