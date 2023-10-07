@@ -26,9 +26,9 @@ class HeadSensors(RobotDevice):
 
     def build_protocol(self):
         super().build_protocol()
-        self._remote_command_processor_list.extend(self._vcnl_4020_set.get_command_processors())
-        self._remote_message_processor_list.extend(self._vcnl_4020_set.get_message_processors())
-        self._remote_stream_processor_list.extend(self._vcnl_4020_set.get_stream_processors())
+        self.add_command_processor_list(self._vcnl_4020_set.get_command_processors())
+        self.add_message_processor_list(self._vcnl_4020_set.get_message_processors())
+        self.add_stream_processor_list(self._vcnl_4020_set.get_stream_processors())
 
         # self._remote_stream_processor_list.append(RemoteProcessor(Stream_comStatistics(STREAM_COM_STATISTICS),device) )
         # self._remote_stream_processor_list.append(RemoteProcessor(Stream_cpuStatistics(STREAM_CPU_STATISTICS),device) )
