@@ -19,7 +19,7 @@ class LegSensorsControlView(DeviceView):
         for led in leg_sensors.get_led_set():
             view = LedControlView.create_view(self._display, led, self._settings_key)
             self.add_component(view, x_cursor, y_cursor)
-            view_width, view_height = view.get_frame.winfo_reqwidth(), view.get_frame.winfo_reqheight()
+            view_width, view_height = view.get_frame().winfo_reqwidth(), view.get_frame().winfo_reqheight()
             x_cursor += view_width - 20
 
     def set_robot(self, robot: AbstractRobot) -> bool:

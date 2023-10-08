@@ -21,7 +21,7 @@ class LegControllersControlView(DeviceView):  # AntLegControllerControlView exte
         for servo in motion_controller.get_servo_set():
             view = ServoControlView.create_view(self._display, servo, self._settings_key)
             self.add_component(view, x_cursor, y_cursor)
-            view_width, view_height = view.get_frame.winfo_reqwidth() - 20, view.get_frame.winfo_reqheight()
+            view_width, view_height = view.get_frame().winfo_reqwidth() - 20, view.get_frame().winfo_reqheight()
             x_cursor += view_width
 
     def set_robot(self, robot: AbstractRobot) -> bool:
