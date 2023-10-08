@@ -62,32 +62,6 @@ STREAM_BMP085_PRESURES = 0x25
 
 
 class HeadSensorsProtocol(DeviceProtocol):
-    def __init__(self, device):
-        super().__init__(device)
-
-        # FIXME why here ?
-        # self._remote_stream_processor_list.append(RemoteProcessor(Stream_comStatistics(STREAM_COM_STATISTICS),device) )
-        # self._remote_stream_processor_list.append(RemoteProcessor(Stream_cpuStatistics(STREAM_CPU_STATISTICS),device) )
-        # self._remote_command_processor_list.append(RemoteProcessor(Cmd_ping(CMD_PING),device) )
-        # self._remote_command_processor_list.append(RemoteProcessor(Cmd_getNodeId(CMD_GET_NODE_ID),device) )
-        # self._remote_message_processor_list.append(RemoteProcessor(Msg_pingResponse(),device) )
-
-        #		 this.streamList.addAll(LegSensorsProtocol.getVcnl4000Protocol(device.getId()).getStreamProcessors(device.getVcnl4000Set()));
-        # this.messageList.addAll(LegSensorsProtocol.getVcnl4000Protocol(device.getId()).getMessageProcessors(device.getVcnl4000Set()));
-
-        #		self._remote_stream_processor_list.append(RemoteProcessor(Stream_comStatistics(STREAM_COM_STATISTICS),device) )
-        #		self._remote_stream_processor_list.append(RemoteProcessor(Stream_cpuStatistics(STREAM_CPU_STATISTICS),device) )
-
-
-        # self._message_list.append(HeadSensorsProtocol.get_mlx90614_protocol(device.get_id()).get_message_processors(device.getMlx90614Set()));
-        # self._stream_list.append(HeadSensorsProtocol.get_mlx90614_protocol(device.get_id()).get_stream_processors(device.getMlx90614Set()));
-        # self._message_list.append(HeadSensorsProtocol.getVcnl4000Protocol(device.get_id()).get_message_processors(device.getVcnl4000Set()));
-        # self._stream_list.append(HeadSensorsProtocol.getVcnl4000Protocol(device.get_id()).get_stream_processors(device.getVcnl4000Set()));
-        # self._message_list.append(HeadSensorsProtocol.get_bmp085_protocol(device.get_id()).get_message_processors(device.getBmp085Set()));
-        # self._stream_list.append(HeadSensorsProtocol.get_bmp085_protocol(device.get_id()).get_stream_processors(device.getBmp085Set()));
-
-
-
     def get_vcnl4020_protocol(self):
         protocol = {
             "device_id": self._device_id,

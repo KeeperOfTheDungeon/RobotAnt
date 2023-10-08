@@ -15,10 +15,10 @@ class LegSensors(RobotDevice):
         self._aquisators = LegSensorsDataAquisator.get_data_aquisators()
 
         self._led_set = LegSensorsLedSet(self._protocol.get_led_protocol())
-        self.add_components(self._led_set)
+        self.add_component_set(self._led_set)
 
         self._vcnl_4000_set = LegSensorsVcnl4000(self._protocol.get_vcnl4000_protocol())
-        self.add_components(self._vcnl_4000_set)
+        self.add_component_set(self._vcnl_4000_set)
 
         self.build_protocol()
 

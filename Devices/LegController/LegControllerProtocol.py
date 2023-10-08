@@ -104,9 +104,9 @@ class LegControllerProtocol(DeviceProtocol):
 
             # 0, 0, 0, 0,
 
-            "cmd_get_servostatus": CMD_GET_SERVO_STATUS,
+            "cmd_getServoStatus": CMD_GET_SERVO_STATUS,
             "cmd_getServoPosition": CMD_GET_SERVO_POSITION,
-            "cmd_get_servospeed": CMD_GET_SERVO_SPEED,
+            "cmd_getServoSpeed": CMD_GET_SERVO_SPEED,
 
             "cmd_moveServoTo": CMD_SERVO_MOVE_TO,
             "cmd_servoMoveToAtSpeed": CMD_SERVO_MOVE_TO_AT_SPEED,
@@ -122,6 +122,7 @@ class LegControllerProtocol(DeviceProtocol):
 
             "stream_servoPositions": STREAM_SERVOS_POSITIONS,
             "stream_servoDestinations": STREAM_SERVOS_DESTINATIONS,
+            "stream_servoStatuses": STREAM_SERVOS_STATUS,
         }
 
         return protocol
