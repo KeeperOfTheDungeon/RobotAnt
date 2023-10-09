@@ -62,10 +62,8 @@ STREAM_SERVOS_DESTINATIONS = 0x21
 STREAM_SERVOS_STATUS = 0x22
 
 STREAM_CURRENT_CONSUMPTION = 0x23
-# FIXME This is different than the Java source
-STREAM_CURRENT_TOTAL_CONSUMPTION = 0x25  # public static final byte STREAM_CURRENT_TOTAL_CONSUMPTION		= 0x24;
-# FIXME This is different than the Java source
-STREAM_CURRENT_MAX_CONSUMPTION = 0x24  # public static final byte STREAM_CURRENT_MAX_CONSUMPTION		 	= 0x25;
+STREAM_CURRENT_MAX_CONSUMPTION = 0x24  # This was 0x25 before, diffent than the java project
+STREAM_CURRENT_TOTAL_CONSUMPTION = 0x25  # This was 0x24 before, diffent than the java project
 
 STREAM_SERVO_RAW_ANALOG_VALUES = 0x26
 STREAM_TEMPERATURES = 0x27
