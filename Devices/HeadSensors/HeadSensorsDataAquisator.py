@@ -13,10 +13,10 @@ class HeadSensorsDataAquisator(DeviceAquisators):
     @classmethod
     def get_data_aquisators(cls):
         return super().get_data_aquisators() + [
-            DataAquisator("Mxl90614 ambient temperature", 100, MLX90614_AQUISATE_AMBIENT),
-            DataAquisator("Mxl90614 object temperature", 100, MLX90614_AQUISATE_OBJECT),
+            # DataAquisator("Mxl90614 ambient temperature", 100, MLX90614_AQUISATE_AMBIENT),
+            # DataAquisator("Mxl90614 object temperature", 100, MLX90614_AQUISATE_OBJECT),
             DataAquisator("VCNL4000 lux", 100, VCNL4000_AQUISATE_LUX),
             DataAquisator("VCNL4000 distance", 100, VCNL4000_AQUISATE_DISTANCE),
-            DataAquisator("Bmp085 temperature", 10, BMP085_AQUISATE_TEMPERATURE),
-            DataAquisator("Bmp085 presure", 10, BMP085_AQUISATE_PRESURE),
+            # DataAquisator("Bmp085 temperature", 10, BMP085_AQUISATE_TEMPERATURE),
+            # DataAquisator("Bmp085 pressure", 10, BMP085_AQUISATE_PRESURE),
         ]
