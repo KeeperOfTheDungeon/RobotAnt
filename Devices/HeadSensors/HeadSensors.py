@@ -61,7 +61,7 @@ class HeadSensors(RobotDevice):
         raise ValueError("WIP Bmp085Set")
         return self._bmp085_sensor_set
 
-    def _load_setup(self):
+    def load_setup(self):
         self._vcnl_4020_set.load_settings()
         # self._mxl90614_set.load_settings()
         # self._bmp085Sensor_set.load_settings()

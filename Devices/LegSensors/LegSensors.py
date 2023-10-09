@@ -40,5 +40,5 @@ class LegSensors(RobotDevice):
     def get_vcnl_4000_set(self):
         return self._vcnl_4000_set
 
-    def _load_setup(self):
+    def load_setup(self):
         self._vcnl_4000_set.load_settings()

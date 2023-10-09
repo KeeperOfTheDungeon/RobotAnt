@@ -1,4 +1,4 @@
-from Config.AntComponents import AntComponents, MOTION_CONTROLLER
+# from Config.AntComponents import AntComponents, MOTION_CONTROLLER
 from Devices.LegController.LegControllerCurrentSensors import LegControllerCurrentSensors
 from Devices.LegController.LegControllerDataAquisator import LegControllerDataAquisator
 from Devices.LegController.LegControllerProtocol import LegControllerProtocol

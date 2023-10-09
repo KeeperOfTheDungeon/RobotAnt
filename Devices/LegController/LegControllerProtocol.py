@@ -121,6 +121,10 @@ class LegControllerProtocol(DeviceProtocol):
             "stream_servoPositions": STREAM_SERVOS_POSITIONS,
             "stream_servoDestinations": STREAM_SERVOS_DESTINATIONS,
             "stream_servoStatuses": STREAM_SERVOS_STATUS,
+
+            # TODO why is this not used ?
+            "msg_servo_status": MSG_SERVO_STATUS,
+            "msg_servo_speed": MSG_SERVO_SPEED,
         }
 
         return protocol
