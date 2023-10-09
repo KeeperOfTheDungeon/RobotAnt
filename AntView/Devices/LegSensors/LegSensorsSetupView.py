@@ -16,6 +16,15 @@ class LegSensorsSetupView(DeviceView):
         for led in leg_sensors.get_led_set():
             view = LedControlView.create_view(self._display, led, self._settings_key)
             self.add_component(view, x_cursor, y_cursor)
+            view_width, view_height = view.get_frame().winfo_reqwidth(), view.get_frame().winfo_reqheight()
+            x_cursor += view_width - 20
+
+        # x_cursor, y_cursor = 50, 150
+        # for led in leg_sensors.get_vcnl_4000_set():
+        #     view = Vcnl4000SetupView.create_view(self._display, led, self._settings_key)
+        #     self.add_component(view, x_cursor, y_cursor)
+        #     view_width, view_height = view.get_frame().winfo_reqwidth(), view.get_frame().winfo_reqheight()
+        #     x_cursor += view_width - 20
 
     def set_robot(self, robot: AbstractRobot) -> bool:
         sensors: LegSensors = robot.get_device_on_name(AntDeviceConfig.LEG_SENSORS.get_name())

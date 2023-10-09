@@ -163,9 +163,14 @@ class AntView(RobotViewer):
     def show_leg_sensors_setup(self):
         if (not RobotSettings.get_int("{}.state".format("LegSensorsSetupView")) == State.INTERNAL.value
                 and not RobotSettings.get_int("{}.state".format("LegSensorsSetupView")) == State.EXTERNAL.value):
-            print("show leg Sensors setup (not implemented)")
-            # self._leg_sensors_data = LegSensorsSetupView(self._frame, device, self._window_bar)
-            # self._leg_sensors_data.draw()
+            print("show leg sensors setup")
+            device = self._robot.get_leg_sensors()
+            if device is None:
+                messagebox.showerror("Error", "No leg sensor available!")
+            else:
+                self._leg_sensors_data = LegSensorsSetupView(self._frame, device, self._window_bar)
+                self._leg_sensors_data.set_robot(self._robot)
+                self._leg_controller_data.resize(1100, 400)  # FIXME this should respect settings
         else:
             print("{} already open".format("LegSensorsSetupView"))
 
