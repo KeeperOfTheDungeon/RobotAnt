@@ -1,4 +1,4 @@
-from RoboControl.Robot.AbstractRobot.Config.DeviceConfig import DeviceConfig
+from RoboControl.Robot.AbstractRobot.DeviceConfig import DeviceConfig
 
 
 class AntDeviceConfig(DeviceConfig):

@@ -1,5 +1,5 @@
 from Config import AntComponents
-from RoboControl.Robot.Component.generic.currentSensor.CurrentSensorSet import CurrentSensorSet
+from RoboControl.Robot.Component.Sensor.CurrentSensor import CurrentSensorSet
 
 
 class LegControllerCurrentSensors(CurrentSensorSet):

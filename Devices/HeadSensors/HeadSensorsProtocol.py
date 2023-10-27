@@ -1,6 +1,7 @@
-from RoboControl.Robot.Component.Actor.Led.LedProtocol import LedProtocol
-from RoboControl.Robot.Device.Protocol.DeviceProtocol import DeviceProtocol
-from RoboControl.Robot.Device.remoteProcessor.RemoteProcessor import RemoteProcessor
+
+from RoboControl.Robot.Device.DeviceProtocol import DeviceProtocol
+
+from RoboControl.Robot.Device.RemoteProcessor import RemoteProcessor
 
 CMD_VCNL4020_SET_SETTINGS = 0x26
 CMD_VCNL4020_GET_SETTINGS = 0x27

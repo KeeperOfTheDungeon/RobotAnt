@@ -3,8 +3,8 @@ from time import sleep
 from Devices.AntDeviceConfig import AntDeviceConfig
 from Devices.HeadSensors.HeadSensors import HeadSensors
 from Devices.LegController.LegController import LegController
-from RoboControl.Com.Connection.Connection import Connection
-from RoboControl.Com.Connection.SerialConnection import SerialConnection
+from RoboControl.Com.Connection import Connection
+from RoboControl.Com.SerialConnection import SerialConnection
 from Devices.LegSensors.LegSensors import LegSensors
 from RoboControl.Robot.Device.Generic.DataHub.DataHub import DataHub
 from RoboControl.Robot.Device.RobotDevice import RobotDevice

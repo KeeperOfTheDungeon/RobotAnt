@@ -1,6 +1,7 @@
 from Config import AntComponents
-from RoboControl.Robot.Component.Sensor.vcnl4000.Vcnl4000 import Vcnl4000
-from RoboControl.Robot.Component.Sensor.vcnl4000.Vcnl4000Set import Vcnl4000Set
+from RoboControl.Robot.Component.Sensor.Vcnl4000 import Vcnl4000Set
+
+
 
 
 class LegSensorsVcnl4000(Vcnl4000Set):

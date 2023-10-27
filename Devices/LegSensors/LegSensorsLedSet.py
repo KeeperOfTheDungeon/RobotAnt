@@ -1,6 +1,7 @@
 from Config import AntComponents
-from RoboControl.Robot.Component.Actor.Led.Led import Led
-from RoboControl.Robot.Component.Actor.Led.LedSet import LedSet
+from RoboControl.Robot.Component.Actor.Led import LedSet
+
+
 
 
 class LegSensorsLedSet(LedSet):

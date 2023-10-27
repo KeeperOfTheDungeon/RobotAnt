@@ -1,14 +1,12 @@
-#!/usr/bin/env python
 import argparse
-import traceback
 
-import logger
 
-from RoboControl.Com.Connection.SerialConnection import SerialConnection
+
+
+from RoboControl.Com.SerialConnection import SerialConnection
 from ant import Ant
 from AntView.AntView import AntView
 
-log = logger.getMainLogger()
 
 
 def main(do_gui: bool, do_cli: bool):

@@ -1,4 +1,4 @@
-from RoboControl.Robot.Device.Protocol.DeviceProtocol import DeviceProtocol
+from RoboControl.Robot.Device.DeviceProtocol import DeviceProtocol
 
 CMD_SERVO_SET_SETTINGS = 0x20
 CMD_SERVO_GET_SETTINGS = 0x21
