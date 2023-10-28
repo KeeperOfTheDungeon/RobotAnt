@@ -5,7 +5,7 @@ import customtkinter as ctk
 from Devices.AntDeviceConfig import AntDeviceConfig
 from Devices.LegController.LegController import LegController
 from RoboControl.Robot.AbstractRobot.AbstractRobot import AbstractRobot
-from RoboControl.Robot.Component.Actor.servo.ServoSet import ServoSet
+
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
 from RoboView.Robot.Viewer.WindowBar import WindowBar
 from RoboView.Robot.component.actor.servo.view.ServoControlView import ServoControlView
