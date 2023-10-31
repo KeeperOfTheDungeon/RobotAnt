@@ -1,6 +1,6 @@
 from tkinter import messagebox
 
-from Devices.AntDeviceConfig import AntDeviceConfig
+from Config.AntConfig import AntDeviceConfig
 from Devices.HeadSensors.HeadSensors import HeadSensors
 from RoboControl.Robot.AbstractRobot.AbstractRobot import AbstractRobot
 

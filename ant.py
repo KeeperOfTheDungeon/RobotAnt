@@ -1,6 +1,6 @@
 from time import sleep
 
-from Devices.AntDeviceConfig import AntDeviceConfig
+from Config.AntConfig import AntDeviceConfig
 from Devices.HeadSensors.HeadSensors import HeadSensors
 from Devices.LegController.LegController import LegController
 from RoboControl.Com.Connection import Connection

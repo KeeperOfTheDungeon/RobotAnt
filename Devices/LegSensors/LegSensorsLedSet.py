@@ -1,4 +1,4 @@
-from Config import AntComponents
+from Config import AntConfig
 from RoboControl.Robot.Component.Actor.Led import LedSet
 
 
@@ -7,20 +7,20 @@ from RoboControl.Robot.Component.Actor.Led import LedSet
 class LegSensorsLedSet(LedSet):
 
     def __init__(self, protocol):
-        AntComponents.FRONT_LEFT_LEG_LED["protocol"] = protocol
-        AntComponents.FRONT_RIGHT_LEG_LED["protocol"] = protocol
-        AntComponents.CENTER_LEFT_LEG_LED["protocol"] = protocol
-        AntComponents.CENTER_RIGHT_LEG_LED["protocol"] = protocol
-        AntComponents.BACK_LEFT_LEG_LED["protocol"] = protocol
-        AntComponents.BACK_RIGHT_LEG_LED["protocol"] = protocol
+        AntConfig.FRONT_LEFT_LEG_LED["protocol"] = protocol
+        AntConfig.FRONT_RIGHT_LEG_LED["protocol"] = protocol
+        AntConfig.CENTER_LEFT_LEG_LED["protocol"] = protocol
+        AntConfig.CENTER_RIGHT_LEG_LED["protocol"] = protocol
+        AntConfig.BACK_LEFT_LEG_LED["protocol"] = protocol
+        AntConfig.BACK_RIGHT_LEG_LED["protocol"] = protocol
 
         actor_list = [
-            AntComponents.FRONT_LEFT_LEG_LED,
-            AntComponents.FRONT_RIGHT_LEG_LED,
-            AntComponents.CENTER_LEFT_LEG_LED,
-            AntComponents.CENTER_RIGHT_LEG_LED,
-            AntComponents.BACK_LEFT_LEG_LED,
-            AntComponents.BACK_RIGHT_LEG_LED
+            AntConfig.FRONT_LEFT_LEG_LED,
+            AntConfig.FRONT_RIGHT_LEG_LED,
+            AntConfig.CENTER_LEFT_LEG_LED,
+            AntConfig.CENTER_RIGHT_LEG_LED,
+            AntConfig.BACK_LEFT_LEG_LED,
+            AntConfig.BACK_RIGHT_LEG_LED
         ]
 
         super().__init__(actor_list, protocol)
