@@ -34,7 +34,7 @@ class LegSensorsDataView(DeviceView):
             pass
 
     def set_robot(self, robot: AbstractRobot) -> bool:
-        sensors: LegSensors = robot.get_device_on_name(AntDeviceConfig.LEG_SENSORS.get_name())
+        sensors: LegSensors = robot.get_device_on_name(AntDeviceConfig.LEG_SENSORS["DeviceName"])
         if sensors is None:
             messagebox.showerror("Error", "No leg sensors available!")
             return False

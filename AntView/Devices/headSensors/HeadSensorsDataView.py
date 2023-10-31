@@ -42,7 +42,7 @@ class HeadSensorsDataView(DeviceView):
         #    self.add_component(view)
 
     def set_robot(self, robot: AbstractRobot) -> bool:
-        sensors: HeadSensors = robot.get_device_on_name(AntDeviceConfig.HEAD_SENSORS.get_name())
+        sensors: HeadSensors = robot.get_device_on_name(AntDeviceConfig.HEAD_SENSORS["DeviceName"])
         if sensors is None:
             messagebox.showerror("Error", "No head sensors available!")
             return False

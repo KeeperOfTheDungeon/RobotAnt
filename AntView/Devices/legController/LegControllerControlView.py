@@ -25,7 +25,7 @@ class LegControllersControlView(DeviceView):  # AntLegControllerControlView exte
             x_cursor += view_width
 
     def set_robot(self, robot: AbstractRobot) -> bool:
-        sensors: LegController = robot.get_device_on_name(AntDeviceConfig.LEG_CONTROLLER.get_name())
+        sensors: LegController = robot.get_device_on_name(AntDeviceConfig.LEG_CONTROLLER["DeviceName"])
         if sensors is None:
             messagebox.showerror("Error", "No leg controllers available!")
             return False
