@@ -1,6 +1,5 @@
 from tkinter import messagebox
 
-import customtkinter as ctk
 from Config.AntConfig import AntDeviceConfig
 
 

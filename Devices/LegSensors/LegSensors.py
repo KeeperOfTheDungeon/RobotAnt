@@ -1,5 +1,6 @@
 from Devices.LegSensors.LegSensorsDataAquisator import LegSensorsDataAquisator
 from Devices.LegSensors.LegSensorsLedSet import LegSensorsLedSet
+from Devices.LegSensors.LegSensorsLightSensorSet import LegSensorsLightSensorSet
 from Devices.LegSensors.LegSensorsProtocol import LegSensorsProtocol
 from Devices.LegSensors.LegSensorsVcnl4000 import LegSensorsVcnl4000
 from RoboControl.Robot.Component.Actor.Led import Led
@@ -17,10 +18,16 @@ class LegSensors(RobotDevice):
         self._led_set = LegSensorsLedSet(self._protocol.get_led_protocol())
         self.add_component_set(self._led_set)
 
+        self._light_sensor_set = LegSensorsLightSensorSet(self._protocol.get_light_sensors_protocol())
+        self.add_component_set(self._light_sensor_set)
+
+
         self._vcnl_4000_set = LegSensorsVcnl4000(self._protocol.get_vcnl4000_protocol())
         self.add_component_set(self._vcnl_4000_set)
 
         self.build_protocol()
+
+
 
     def build_protocol(self):
         super().build_protocol()
