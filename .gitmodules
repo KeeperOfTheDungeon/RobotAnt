@@ -4,3 +4,6 @@
 [submodule "RoboView"]
 	path = RoboView
 	url = https://github.com/KeeperOfTheDungeon/RoboView.git
+[submodule "RoboBehavior"]
+    path = RoboBehavior
+    url = https://github.com/KeeperOfTheDungeon/RoboBehavior.git
