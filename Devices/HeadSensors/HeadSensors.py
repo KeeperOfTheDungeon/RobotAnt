@@ -2,6 +2,7 @@ from typing import List
 
 from Devices.HeadSensors.HeadSensorsDataAquisator import HeadSensorsDataAquisator
 from Devices.HeadSensors.HeadSensorsProtocol import HeadSensorsProtocol
+from Devices.HeadSensors.HeadSensorsTMF882xSet import HeadSensorsTMF882xSet
 from Devices.HeadSensors.HeadSensorsVcnl4020Set import HeadSensorsVcnl4020Set
 from RoboControl.Robot.Device.RobotDevice import RobotDevice
 from RoboControl.Robot.Value.ComponentValue import ComponentValue
@@ -14,8 +15,13 @@ class HeadSensors(RobotDevice):
 
         self._aquisators = HeadSensorsDataAquisator.get_data_aquisators()
 
-        self._vcnl_4020_set = HeadSensorsVcnl4020Set(self._protocol.get_vcnl4020_protocol())
-        self.add_component_set(self._vcnl_4020_set)
+        #self._vcnl_4020_set = HeadSensorsVcnl4020Set(self._protocol.get_vcnl4020_protocol())
+        #self.add_component_set(self._vcnl_4020_set)
+
+        self._tmf8821_set = HeadSensorsTMF882xSet(self._protocol.get_tmf882x_protocol())
+        self.add_component_set(self._tmf8821_set)
+
+
         # self._mxl90614_set = HeadMlx90614Set(self._protocol.get_mlx90614_protocol())
         # self.add_component_set(self._mxl90614_set)
         # self._bmp085_sensor_set = Bmp085Set(self._protocol.get_bmp085_protocol())
@@ -26,9 +32,14 @@ class HeadSensors(RobotDevice):
 
     def build_protocol(self):
         super().build_protocol()
-        self.add_command_processor_list(self._vcnl_4020_set.get_command_processors())
-        self.add_message_processor_list(self._vcnl_4020_set.get_message_processors())
-        self.add_stream_processor_list(self._vcnl_4020_set.get_stream_processors())
+
+        self.add_command_processor_list(self._tmf8821_set.get_command_processors())
+        self.add_message_processor_list(self._tmf8821_set.get_message_processors())
+        self.add_stream_processor_list(self._tmf8821_set.get_stream_processors())
+
+        #self.add_command_processor_list(self._vcnl_4020_set.get_command_processors())
+        #self.add_message_processor_list(self._vcnl_4020_set.get_message_processors())
+        #self.add_stream_processor_list(self._vcnl_4020_set.get_stream_processors())
 
         # self._remote_stream_processor_list.append(RemoteProcessor(Stream_comStatistics(STREAM_COM_STATISTICS),device) )
         # self._remote_stream_processor_list.append(RemoteProcessor(Stream_cpuStatistics(STREAM_CPU_STATISTICS),device) )
@@ -53,6 +64,9 @@ class HeadSensors(RobotDevice):
     def get_vcnl_4000_set(self):
         return self._vcnl_4020_set
 
+    def get_tmf8821_set(self):
+        return self._tmf8821_set
+
     def get_mxl90614_set(self):
         raise ValueError("WIP HeadMlx90614Set")
         return self._mxl90614_set
@@ -62,7 +76,8 @@ class HeadSensors(RobotDevice):
         return self._bmp085_sensor_set
 
     def load_setup(self):
-        self._vcnl_4020_set.load_settings()
+        self._tmf8821_set.load_settings()
+        #self._vcnl_4020_set.load_settings()
         # self._mxl90614_set.load_settings()
         # self._bmp085Sensor_set.load_settings()
 

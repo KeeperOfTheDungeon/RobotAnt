@@ -1,8 +1,6 @@
 import argparse
 
 
-
-
 from RoboControl.Com.SerialConnection import SerialConnection
 from ant import Ant
 from AntView.AntView import AntView

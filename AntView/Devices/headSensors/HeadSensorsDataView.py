@@ -22,13 +22,14 @@ class HeadSensorsDataView(DeviceView):
         #     view = TemperatureSensorDataView.create_view(self._display, sensor.get_object_sensor(), self._settings_key)
 
         x_cursor, y_cursor = 20, 20
-        for sensor in head_sensors.get_vcnl_4000_set():
-            view = LuxSensorDataView.create_view(self._display, sensor.get_lux_sensor(), self._settings_key)
-            self.add_component(view, x_cursor, y_cursor)
-            view = DistanceSensorDataView.create_view(self._display, sensor.get_distance_sensor(), self._settings_key)
-            self.add_component(view, x_cursor, y_cursor + 90)
-            view_width, view_height = view.get_frame().winfo_reqwidth(), view.get_frame().winfo_reqheight()
-            x_cursor += view_width + 10
+        for (sensor) in head_sensors.get_tmf8821_set():
+            #view = LuxSensorDataView.create_view(self._display, sensor.get_lux_sensor(), self._settings_key)
+            #self.add_component(view, x_cursor, y_cursor)
+            for s in sensor.get_distance_sensors():
+                view = DistanceSensorDataView.create_view(self._display, s, self._settings_key)
+                self.add_component(view, x_cursor, y_cursor + 90)
+                view_width, view_height = view.get_frame().winfo_reqwidth(), view.get_frame().winfo_reqheight()
+                x_cursor += view_width + 10
 
         # TODO
         # for sensor in head_sensors.get_bmp085_set():

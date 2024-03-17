@@ -5,20 +5,19 @@ HEAD_SENSORS_ID = 11
 TAIL_BOARD_ID = 12
 LEG_SENSORS_ID = 13
 
+
 class AntDeviceConfig():
+    MAIN_DATA_HUB = {"DeviceId": MAIN_DATA_HUB_ID,
+                     "DeviceName": "Main Data Hub"}
 
-    MAIN_DATA_HUB = {"DeviceId" : MAIN_DATA_HUB_ID,
-                     "DeviceName" : "Main Data Hub"}
+    HEAD_SENSORS = {"DeviceId": HEAD_SENSORS_ID,
+                    "DeviceName": "head sensors"}
 
-    HEAD_SENSORS = {"DeviceId" : HEAD_SENSORS_ID,
-                     "DeviceName" : "head sensors"}
+    LEG_CONTROLLER = {"DeviceId": LEG_CONTROLLER_ID,
+                      "DeviceName": "Motion Controller"}
 
-    LEG_CONTROLLER = {"DeviceId" : LEG_CONTROLLER_ID,
-                     "DeviceName" : "Motion Controller"}
-    
-    LEG_SENSORS = {"DeviceId" : LEG_SENSORS_ID,
-                     "DeviceName" : "leg sensors"}
-
+    LEG_SENSORS = {"DeviceId": LEG_SENSORS_ID,
+                   "DeviceName": "leg sensors"}
 
 
 ROBOT_NAME = {  # ROBOT_NAME(,0,DataHub.ID),
@@ -27,11 +26,7 @@ ROBOT_NAME = {  # ROBOT_NAME(,0,DataHub.ID),
     "global_id": 0,
 }
 
-
-
 # TMP Light Sensors
-
-
 
 
 LEFT_LIGHT_SENSOR = {  # FRONT_LEFT_LEG_LED ("front left",1),
@@ -50,7 +45,6 @@ RIGHT_LIGHT_SENSOR = {  # FRONT_LEFT_LEG_LED ("front left",1),
     "local_id": 2,
     "global_id": 0,
 }
-
 
 # ************* LegSensorsConfiguration ******************
 
@@ -330,6 +324,18 @@ TAIL_RIGHT_LED = {  # TAIL_RIGHT_LED ("led right", 1),
     "local_id": 1,
     "global_id": 0,
 }
+
+
+class HeadSensors:
+    FRONT_TMF882x_SENSOR = {
+        "name": "front",
+        "local_id": 1,
+        "global_id": 0,
+    }
+
+    sensor_list = [
+        FRONT_TMF882x_SENSOR
+    ]
 
 
 class AntComponents:
