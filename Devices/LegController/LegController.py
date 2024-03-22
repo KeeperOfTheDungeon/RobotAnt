@@ -18,8 +18,8 @@ class LegController(RobotDevice):
 
         self._protocol = LegControllerProtocol(self)
 
-        self._servo_set = LegControllerServoSet(self._protocol.get_servo_protocol())
-        self.add_component_set(self._servo_set)
+        #self._servo_set = LegControllerServoSet(self._protocol.get_servo_protocol())
+        #self.add_component_set(self._servo_set)
 
         self._current_sensor_set = LegControllerCurrentSensors(self._protocol.get_current_protocol())
         self.add_component_set(self._current_sensor_set)
@@ -30,7 +30,7 @@ class LegController(RobotDevice):
         # self._motion_controller = AntMotionController(MOTION_CONTROLLER, LegControllerProtocol.get_motion_protocol(), self)
         # self.add_component_set(self._motion_controller)
 
-        self.build_protocol()
+        #self.build_protocol()
 
     def build_protocol(self):
         super().build_protocol()
@@ -50,11 +50,12 @@ class LegController(RobotDevice):
         return self._temperature_sensor_set
 
     def load_setup(self):
-        for servo in self._servo_set:
-            servo.remote_load_defaults()
-            servo.remote_get_settings()
-            servo.remote_get_servo_speed()
-            servo.remote_get_servo_status()
+        pass
+        #for servo in self._servo_set:s
+            #servo.remote_load_defaults()
+            #servo.remote_get_settings()
+            #servo.remote_get_servo_speed()
+            #servo.remote_get_servo_status()
 
         # for current in self._current_sensor_set:
         #     current.remote_get_settings()

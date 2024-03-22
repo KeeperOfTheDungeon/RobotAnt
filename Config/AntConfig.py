@@ -331,10 +331,18 @@ class HeadSensors:
         "name": "front",
         "local_id": 1,
         "global_id": 0,
+        "device_id": 1
+    }
+
+    LEFT_TMF882x_SENSOR = {
+        "name": "left",
+        "local_id": 2,
+        "global_id": 0,
+        "device_id": 2
     }
 
     sensor_list = [
-        FRONT_TMF882x_SENSOR
+        FRONT_TMF882x_SENSOR,
     ]
 
 

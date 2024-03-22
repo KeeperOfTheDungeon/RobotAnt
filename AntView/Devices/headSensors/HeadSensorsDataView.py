@@ -1,12 +1,13 @@
 from tkinter import messagebox
 
 from Config.AntConfig import AntDeviceConfig
+from Devices.HeadSensors import HeadSensorsDataAquisator
 from Devices.HeadSensors.HeadSensors import HeadSensors
 from RoboControl.Robot.AbstractRobot.AbstractRobot import AbstractRobot
 
 from RoboView.Robot.Device.Viewer.DeviceView import DeviceView
 from RoboView.Robot.component.sensor.generic.distance.view.DistanceSensorDataView import DistanceSensorDataView
-from RoboView.Robot.component.sensor.generic.lux.view.LuxSensorDataView import LuxSensorDataView
+from RoboView.Robot.component.sensor.tmf882x.TMF882xDataView import TMF882xDataView
 
 
 class HeadSensorsDataView(DeviceView):
@@ -21,15 +22,7 @@ class HeadSensorsDataView(DeviceView):
         #     view = TemperatureSensorDataView.create_view(self._display, sensor.get_ambient_sensor(), self._settings_key)
         #     view = TemperatureSensorDataView.create_view(self._display, sensor.get_object_sensor(), self._settings_key)
 
-        x_cursor, y_cursor = 20, 20
-        for (sensor) in head_sensors.get_tmf8821_set():
-            #view = LuxSensorDataView.create_view(self._display, sensor.get_lux_sensor(), self._settings_key)
-            #self.add_component(view, x_cursor, y_cursor)
-            for s in sensor.get_distance_sensors():
-                view = DistanceSensorDataView.create_view(self._display, s, self._settings_key)
-                self.add_component(view, x_cursor, y_cursor + 90)
-                view_width, view_height = view.get_frame().winfo_reqwidth(), view.get_frame().winfo_reqheight()
-                x_cursor += view_width + 10
+        TMF882xDataView(head_sensors.get_tmf8821_set(), self)
 
         # TODO
         # for sensor in head_sensors.get_bmp085_set():
