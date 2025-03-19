@@ -31,6 +31,9 @@ __pycache__
 .venv
 venv
 __pypackages__
+pyproject.toml
+uv.lock
+.venv*
 
 # OS
 .DS_Store

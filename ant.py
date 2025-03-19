@@ -35,14 +35,14 @@ class Ant(Robot):
         self._data_hub = DataHub(AntDeviceConfig.MAIN_DATA_HUB)
         self.add_device(self._data_hub)
 
-        self._head_sensors = HeadSensors(AntDeviceConfig.HEAD_SENSORS)
-        self.add_device(self._head_sensors)
+        #self._head_sensors = HeadSensors(AntDeviceConfig.HEAD_SENSORS)
+        #self.add_device(self._head_sensors)
 
-        self._leg_sensors = LegSensors(AntDeviceConfig.LEG_SENSORS)
-        self.add_device(self._leg_sensors)
+        #self._leg_sensors = LegSensors(AntDeviceConfig.LEG_SENSORS)
+        #self.add_device(self._leg_sensors)
 
-        self._leg_controller = LegController(AntDeviceConfig.LEG_CONTROLLER)
-        self.add_device(self._leg_controller)
+        #self._leg_controller = LegController(AntDeviceConfig.LEG_CONTROLLER)
+        #self.add_device(self._leg_controller)
 
         # self._tail_board = TailBoard(AntDeviceConfig.TAIL_BOARD)
         # self.add_device(self._tail_board)
